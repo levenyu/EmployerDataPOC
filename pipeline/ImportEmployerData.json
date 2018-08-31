@@ -39,6 +39,16 @@
 					}
 				]
 			}
-		]
+		],
+		"parameters": {
+			"SourceFileName": {
+				"type": "String",
+				"defaultValue": "SedgwickClaimFile_201808260955.xml"
+			},
+			"SourceFolderName": {
+				"type": "String",
+				"defaultValue": "employer"
+			}
+		}
 	}
 }

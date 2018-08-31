@@ -6,14 +6,21 @@
 			"referenceName": "EmployerDataSource",
 			"type": "LinkedServiceReference"
 		},
-		"type": "AzureBlob",
-		"structure": [
-			{
-				"name": "Prop_0",
+		"parameters": {
+			"SourceFileName": {
 				"type": "String",
-				"description": "XML data"
+				"defaultValue": "SedgwickClaimFile_201808260955.xml"
+			},
+			"SourceFolderName": {
+				"type": "String",
+				"defaultValue": "employer"
 			}
-		],
+		},
+		"type": "AzureBlob",
+		"structure": {
+			"value": "@concat(dataset().SourceFolderName,'/',dataset().SourceFileName)",
+			"type": "Expression"
+		},
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
@@ -24,8 +31,14 @@
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": "SedgwickClaimFile_201808260955.xml",
-			"folderPath": "employer"
+			"fileName": {
+				"value": "@dataset().SourceFileName",
+				"type": "Expression"
+			},
+			"folderPath": {
+				"value": "@dataset().SourceFolderName",
+				"type": "Expression"
+			}
 		}
 	}
 }
