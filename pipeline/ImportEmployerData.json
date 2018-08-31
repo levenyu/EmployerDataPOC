@@ -75,6 +75,10 @@
 					{
 						"name": "Prop_0",
 						"type": "String"
+					},
+					{
+						"name": "Prop_1",
+						"type": "String"
 					}
 				]
 			},
@@ -90,6 +94,16 @@
 						"type": "String"
 					}
 				]
+			},
+			"DataMappingStructure": {
+				"type": "String",
+				"defaultValue": {
+					"type": "TabularTranslator",
+					"columnMappings": {
+						"Prop_0": "XMLData",
+						"Prop_1": "SourceFileName"
+					}
+				}
 			}
 		}
 	}
