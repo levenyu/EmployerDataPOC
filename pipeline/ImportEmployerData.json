@@ -1,0 +1,24 @@
+{
+	"name": "ImportEmployerData",
+	"properties": {
+		"description": "Import Employer Data",
+		"activities": [
+			{
+				"name": "CopyXmlToASD",
+				"description": "Copy Xml To ASD",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"enableStaging": false,
+					"dataIntegrationUnits": 0
+				}
+			}
+		]
+	}
+}
