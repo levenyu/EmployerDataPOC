@@ -61,14 +61,6 @@
 						"referenceName": "PolarisEtlASD",
 						"type": "DatasetReference",
 						"parameters": {
-							"SourceFileName": {
-								"value": "@pipeline().parameters.SourceFileName",
-								"type": "Expression"
-							},
-							"SourceFolderName": {
-								"value": "@pipeline().parameters.SourceFolderName",
-								"type": "Expression"
-							},
 							"Structure": {
 								"value": "@pipeline().parameters.SinkDataStructure",
 								"type": "Expression"
