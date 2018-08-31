@@ -14,11 +14,20 @@
 			"SourceFolderName": {
 				"type": "String",
 				"defaultValue": "employer"
+			},
+			"Structure": {
+				"type": "String",
+				"defaultValue": [
+					{
+						"name": "XMLData",
+						"type": "String"
+					}
+				]
 			}
 		},
 		"type": "AzureSqlTable",
 		"structure": {
-			"value": "@concat(dataset().SourceFolderName,'/',dataset().SourceFileName)",
+			"value": "@dataset().Structure",
 			"type": "Expression"
 		},
 		"typeProperties": {
