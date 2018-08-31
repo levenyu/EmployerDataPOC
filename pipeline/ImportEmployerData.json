@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "BlobSource",
-						"recursive": false
+						"recursive": true
 					},
 					"sink": {
 						"type": "SqlSink",
@@ -45,7 +45,17 @@
 				"outputs": [
 					{
 						"referenceName": "PolarisEtlASD",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"SourceFileName": {
+								"value": "@pipeline().parameters.SourceFileName",
+								"type": "Expression"
+							},
+							"SourceFolderName": {
+								"value": "@pipeline().parameters.SourceFolderName",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
@@ -58,6 +68,28 @@
 			"SourceFolderName": {
 				"type": "String",
 				"defaultValue": "employer"
+			},
+			"SourceFileStructure": {
+				"type": "String",
+				"defaultValue": [
+					{
+						"name": "Prop_0",
+						"type": "String"
+					}
+				]
+			},
+			"SinkDataStructure": {
+				"type": "String",
+				"defaultValue": [
+					{
+						"name": "XMLData",
+						"type": "String"
+					},
+					{
+						"name": "SourceFileName",
+						"type": "String"
+					}
+				]
 			}
 		}
 	}
