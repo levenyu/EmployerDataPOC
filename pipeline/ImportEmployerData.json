@@ -38,6 +38,10 @@
 							"SourceFolderName": {
 								"value": "@pipeline().parameters.SourceFolderName",
 								"type": "Expression"
+							},
+							"Structure": {
+								"value": "@pipeline().parameters.SourceDataStructure",
+								"type": "Expression"
 							}
 						}
 					}
@@ -75,10 +79,6 @@
 					{
 						"name": "Prop_0",
 						"type": "String"
-					},
-					{
-						"name": "Prop_1",
-						"type": "String"
 					}
 				]
 			},
@@ -88,10 +88,6 @@
 					{
 						"name": "XMLData",
 						"type": "String"
-					},
-					{
-						"name": "SourceFileName",
-						"type": "String"
 					}
 				]
 			},
@@ -100,8 +96,7 @@
 				"defaultValue": {
 					"type": "TabularTranslator",
 					"columnMappings": {
-						"Prop_0": "XMLData",
-						"Prop_1": "SourceFileName"
+						"Prop_0": "XMLData"
 					}
 				}
 			}
