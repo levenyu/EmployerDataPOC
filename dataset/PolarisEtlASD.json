@@ -6,13 +6,21 @@
 			"referenceName": "PolarisEtlASD",
 			"type": "LinkedServiceReference"
 		},
-		"type": "AzureSqlTable",
-		"structure": [
-			{
-				"name": "XMLData",
-				"type": "String"
+		"parameters": {
+			"SourceFileName": {
+				"type": "String",
+				"defaultValue": "SedgwickClaimFile_201808260955.xml"
+			},
+			"SourceFolderName": {
+				"type": "String",
+				"defaultValue": "employer"
 			}
-		],
+		},
+		"type": "AzureSqlTable",
+		"structure": {
+			"value": "@concat(dataset().SourceFolderName,'/',dataset().SourceFileName)",
+			"type": "Expression"
+		},
 		"typeProperties": {
 			"tableName": "[master].[SedgwickClaimXML]"
 		}
