@@ -1,0 +1,24 @@
+{
+	"name": "DestinationDataset_6xb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureBlob",
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "|",
+				"rowDelimiter": "",
+				"nullValue": "",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": "Provider.csv",
+			"folderPath": "profisee"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

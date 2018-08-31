@@ -1,0 +1,48 @@
+{
+	"name": "CopyPipeline_6xb",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_6xb",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "profisee/Provider.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "select \r\n\tcode as ProviderID,\r\n\tFuseID as FuseID,\t\r\n\tname  as ProviderName,\r\n\tLocationAddressLine1,\r\n\tLocationAddressLine2,\r\n\tLocationAddressLine3,\r\n\tLocationAddressCity,\r\n\tLocationAddressCounty,\r\n\tLocationAddressState_Name as LocationAddressState,\r\n\tLocationAddressPostalCode,\r\n\tLocationAddressCountry_Code as LocationAddressCountry,\r\n\tPhone,\r\n\tPhoneExtension,\r\n\tCellPhone,\r\n\tEmail,\r\n\tFaxNumber,\r\n\tIsGroupHealth_Code as IsGroupHealth,\r\n\tIsWorkersComp_Code as IsWorkersComp,\r\n\tIsManagedMedicaidAprvdFL_Code as IsManagedMedicaidAprvdFL,\r\n\tTransportationProviderType_Code as TransportationProviderType,\r\n\tIsTransportationActive_Code as IsTransportationActive_Code ,\r\n\tTransportationInactiveDate,\r\n\tWorkersCompDoesSedan_Code as WorkersCompDoesSedan,\r\n\tWorkersCompDoesWheelChair_Code as WorkersCompDoesWheelChair,\r\n\tWorkersCompDoesStretcher_Code as WorkersCompDoesStretcher,\r\n\tWorkersCompDoesAirAmbulance_Code as WorkersCompDoesAirAmbulance,\r\n\tWorkersCompDoesAdvancedLifeSupport_Code as WorkersCompDoesAdvancedLifeSupport,\r\n\tWorkersCompDoesAdvancedLifeSupportLvl2_Code as WorkersCompDoesAdvancedLifeSupportLvl2,\r\n\tWorkersCompDoesBasicLifeSupport_Code as WorkersCompDoesBasicLifeSupport,\r\n\tWorkersCompDoesMiniBus_Code as WorkersCompDoesMiniBus,\r\n\tWorkersCompDoesOther_Code as WorkersCompDoesOther,\r\n\tWorkersCompFlatRate,\r\n\tWorkersCompNoShowFlatRate,\r\n\tWorkersCompSedanRatePerMile,\r\n\tWorkersCompSedanLoadCharge,\r\n\tWorkersCompSedanWaitRatePerHour,\r\n\tWorkersCompSedanMinChargePerTrip,\r\n\tWorkersCompSedanMinMiles,\r\n\tWorkersCompSedanNoShowRate,\r\n\tWorkersCompWheelChairRatePerMile,\r\n\tWorkersCompWheelChairWaitRatePerHour,\r\n\tWorkersCompWheelChairLoadCharge,\r\n\tWorkersCompWheelChairMinChargePerTrip,\r\n\tWorkersCompWheelChairMinMiles,\r\n\tWorkersCompWheelChairNoShowRate,\r\n\tWorkersCompStretcherRatePerMile,\r\n\tWorkersCompStretcherWaitRatePerHour,\r\n\tWorkersCompStretcherLoadCharge,\r\n\tWorkersCompStretcherMinChargePerTrip,\r\n\tWorkersCompStretcherMinMiles,\r\n\tWorkersCompStretcherNoShowRate,\r\n\tWorkersCompAdvancedLifeSupportRatePerMile,\r\n\tWorkersCompAdvancedLifeSupportMinMiles,\r\n\tWorkersCompAdvancedLifeSupportNoShowRate,\r\n\tWorkersCompAdvancedLifeSupportWaitRatePerHour,\r\n\tWorkersCompAdvancedLifeSupportLoadCharge,\r\n\tWorkersCompAdvancedLifeSupportMinTripCharge,\r\n\tWorkersCompAdvancedLifeSupportLvl2RatePerMile,\r\n\tWorkersCompAdvancedLifeSupportLvl2MinMiles,\r\n\tWorkersCompAdvancedLifeSupportLvl2NoShowRate,\r\n\tWorkersCompAdvancedLifeSupportLvl2WaitRatePerHour,\r\n\tWorkersCompAdvancedLifeSupportLvl2LoadCharge,\r\n\tWorkersCompAdvancedLifeSupportLvl2MinTripCharge,\r\n\tWorkersCompBasicLifeSupportRatePerMile,\r\n\tWorkersCompBasicLifeSupportMinMiles,\r\n\tWorkersCompBasicLifeSupportNoShowRate,\r\n\tWorkersCompBasicLifeSupportWaitRatePerHour,\r\n\tWorkersCompBasicLifeSupportLoadCharge,\r\n\tWorkersCompBasicLifeSupportMinTripCharge,\r\n\tWorkersCompMiniBusRatePerMile,\r\n\tWorkersCompMiniBusMinMiles,\r\n\tWorkersCompMiniBusNoShowRate,\r\n\tWorkersCompMiniBusWaitRatePerHour,\r\n\tWorkersCompMiniBusMiniTripCharge,\r\n\tGroupHealthDoesSedan_Code as GroupHealthDoesSedan,\r\n\tGroupHealthDoesWheelChair_Code as GroupHealthDoesWheelChair,\r\n\tGroupHealthDoesStretcher_Code as GroupHealthDoesStretcher,\r\n\tGroupHealthDoesAirAmbulanceFixedWing_Code as GroupHealthDoesAirAmbulanceFixedWing,\r\n\tGroupHealthDoesAirAmbulanceRotaryWing_Code as GroupHealthDoesAirAmbulanceRotaryWing,\r\n\tGroupHealthDoesAdvancedLifeSupport_Code as GroupHealthDoesAdvancedLifeSupport,\r\n\tGroupHealthDoesAdvancedLifeSupportLvl2_Code as GroupHealthDoesAdvancedLifeSupportLvl2,\r\n\tGroupHealthDoesBasicLifeSupport_Code as GroupHealthDoesBasicLifeSupport,\r\n\tGroupHealthDoesMiniBus_Code as GroupHealthDoesMiniBus,\r\n\tGroupHealthDoesOther_Code as GroupHealthDoesOther,\r\n\tGroupHealthAttendantRate,\r\n\tGroupHealthFlatRate,\r\n\tGroupHealthNoShowFlatRate,\r\n\tGroupHealthSedanRatePerMile,\r\n\tGroupHealthSedanLoadCharge,\r\n\tGroupHealthSedanWaitRatePerHour,\r\n\tGroupHealthSedanMinChargePerTrip,\r\n\tGroupHealthSedanNoShowRate,\r\n\tGroupHealthWheelChairRatePerMile,\r\n\tGroupHealthWheelChairLoadCharge,\r\n\tGroupHealthWheelChairMinChargePerTrip,\r\n\tGroupHealthWheelChairNoShowRate,\r\n\tGroupHealthStretcherRatePerMile,\r\n\tGroupHealthStretcherLoadCharge,\r\n\tGroupHealthStretcherMinChargePerTrip,\r\n\tGroupHealthStretcherNoShowRate,\r\n\tGroupHealthAdvancedLifeSupportRatePerMile,\r\n\tGroupHealthAdvancedLifeSupportLoadCharge,\r\n\tGroupHealthAdvancedLifeSupportMinTripCharge,\r\n\tGroupHealthAdvancedLifeSupportNoShowRate,\r\n\tGroupHealthAdvancedLifeSupportLvl2RatePerMile,\r\n\tGroupHealthAdvancedLifeSupportLvl2LoadCharge,\r\n\tGrpHealthAdvancedLifeSupportLvl2MinTripCharge,\r\n\tGroupHealthAdvancedLifeSupportLvl2NoShowRate,\r\n\tGroupHealthBasicLifeSupportRatePerMile,\r\n\tGroupHealthBasicLifeSupportLoadCharge,\r\n\tGroupHealthBasicLifeSupportMinTripCharge,\r\n\tGroupHealthBasicLifeSupportNoShowRate,\r\n\tGroupHealthMiniBusRatePerMile,\r\n\tGroupHealthMiniBusMinTripCharge,\r\n\tGroupHealthMiniBusSupportNoShowRate,\r\n\tHasCarSeat_Code as HasCarSeat_Code,\r\n\tCanAccomodateManualWheelChair_Code as CanAccomodateManualWheelChair,\r\n\tCanAccomodateElectricWheelChair_Code as CanAccomodateElectricWheelChair,\r\n\tCanAccomodateServiceAnimal_Code as CanAccomodateServiceAnimal,\r\n\tHasSpanishLanguageDrivers_Code as HasSpanishLanguageDrivers,\r\n\tHasCreoleLanguageDrivers_Code as HasCreoleLanguageDrivers,\r\n\tHasMandarinLanguageDrivers_Code as HasMandarinLanguageDrivers,\r\n\tHasCantoneseLanuageDrivers_code as HasCantoneseLanuageDrivers,\r\n\tHasRussianLanguageDrivers_Code as HasRussianLanguageDrivers,\r\n\tHasPortugueseLanguageDrivers_Code as HasPortugueseLanguageDrivers,\r\n\tHasOtherLanguageDrivers_Code as HasOtherLanguageDrivers,\r\n\tMaximumVehicleCapacity,\r\n\tFleetSize,\r\n\tAttendantAvailable_Code as AttendantAvailable,\r\n\tSoftwareProvider,\r\n\tSoftwareProviderID,\r\n\tSoftwareStartDate\r\nfrom \r\n\tmdm.OCCM_Provider_VwTransportationProvider\r\nwhere \r\n\tcode like 'PRVT%' and\r\n\tFuseID is not null and\r\n\tname is not null and\r\n                  IsTransportationActive_Code ='Yes'"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_6xb",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_6xb",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

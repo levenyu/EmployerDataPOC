@@ -1,0 +1,12 @@
+{
+	"name": "occmonpremintegrationruntime",
+	"properties": {
+		"type": "SelfHosted",
+		"typeProperties": {
+			"linkedInfo": {
+				"resourceId": "/subscriptions/0fbf2902-88ee-416e-a94a-40846db5f2f8/resourcegroups/DWPOC/providers/Microsoft.DataFactory/factories/aghpoc/integrationruntimes/occmonpremintegrationruntime",
+				"authorizationType": "Rbac"
+			}
+		}
+	}
+}
