@@ -1,0 +1,20 @@
+{
+	"name": "PolarisEtlASD",
+	"properties": {
+		"description": "PolarisEtl ASD",
+		"linkedServiceName": {
+			"referenceName": "PolarisEtlASD",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "XMLData",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[master].[SedgwickClaimXML]"
+		}
+	}
+}

@@ -19,12 +19,22 @@
 						"type": "BlobSource",
 						"recursive": false
 					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
 					"enableStaging": false,
 					"dataIntegrationUnits": 0
 				},
 				"inputs": [
 					{
-						"referenceName": "EmployerData",
+						"referenceName": "EmployerDataSource",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "PolarisEtlASD",
 						"type": "DatasetReference"
 					}
 				]
