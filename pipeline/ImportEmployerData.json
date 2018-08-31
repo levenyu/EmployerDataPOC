@@ -15,9 +15,19 @@
 					"secureInput": false
 				},
 				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
 					"enableStaging": false,
 					"dataIntegrationUnits": 0
-				}
+				},
+				"inputs": [
+					{
+						"referenceName": "EmployerData",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		]
 	}

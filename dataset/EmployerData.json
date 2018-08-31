@@ -1,0 +1,31 @@
+{
+	"name": "EmployerData",
+	"properties": {
+		"description": "Sedgwick employer data as XML file in the Employer BLOB container",
+		"linkedServiceName": {
+			"referenceName": "EmployerDataSource",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "Prop_0",
+				"type": "String",
+				"description": "XML data"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "\u0001",
+				"rowDelimiter": "\u0001",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": false
+			},
+			"fileName": "SedgwickClaimFile_201808260955.xml",
+			"folderPath": "employer"
+		}
+	}
+}
