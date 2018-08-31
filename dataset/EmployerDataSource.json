@@ -21,17 +21,13 @@
 					{
 						"name": "Prop_0",
 						"type": "String"
-					},
-					{
-						"name": "Prop_1",
-						"type": "String"
 					}
 				]
 			}
 		},
 		"type": "AzureBlob",
 		"structure": {
-			"value": "@concat(dataset().SourceFolderName,'/',dataset().SourceFileName)",
+			"value": "@dataset().Structure",
 			"type": "Expression"
 		},
 		"typeProperties": {
