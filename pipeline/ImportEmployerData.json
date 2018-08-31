@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "BlobSource",
-						"recursive": true
+						"recursive": false
 					},
 					"enableStaging": false,
 					"dataIntegrationUnits": 0

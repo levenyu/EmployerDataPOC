@@ -18,7 +18,7 @@
 			"format": {
 				"type": "TextFormat",
 				"columnDelimiter": "\u0001",
-				"rowDelimiter": "\u0001",
+				"rowDelimiter": "",
 				"nullValue": "\\N",
 				"treatEmptyAsNull": true,
 				"skipLineCount": 0,
