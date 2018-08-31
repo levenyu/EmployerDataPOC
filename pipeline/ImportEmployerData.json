@@ -29,7 +29,17 @@
 				"inputs": [
 					{
 						"referenceName": "EmployerDataSource",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"SourceFileName": {
+								"value": "@pipeline().parameters.SourceFileName",
+								"type": "Expression"
+							},
+							"SourceFolderName": {
+								"value": "@pipeline().parameters.SourceFolderName",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
