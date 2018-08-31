@@ -1,7 +1,7 @@
 {
-	"name": "ImportEmployerData",
+	"name": "ImportSedgwickEmployerData",
 	"properties": {
-		"description": "Import Employer Data",
+		"description": "Import Sedgwick Employer Data",
 		"activities": [
 			{
 				"name": "CopyXmlToASD",
