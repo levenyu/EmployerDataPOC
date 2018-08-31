@@ -1,5 +1,5 @@
 {
-	"name": "EmployerDataSource",
+	"name": "SedgwickEmployerDataSource",
 	"properties": {
 		"description": "Sedgwick employer data source as XML file in the Employer BLOB container",
 		"linkedServiceName": {
