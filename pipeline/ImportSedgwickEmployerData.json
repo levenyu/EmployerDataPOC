@@ -27,7 +27,18 @@
 					},
 					"sink": {
 						"type": "SqlSink",
-						"writeBatchSize": 10000
+						"writeBatchSize": 10000,
+						"sqlWriterStoredProcedureName": "master.uspImportSedgwickClaimData",
+						"sqlWriterTableType": "master.udttSedgwickClaimData",
+						"storedProcedureParameters": {
+							"SourceXmlFileName": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.SourceFileName",
+									"type": "Expression"
+								}
+							}
+						}
 					},
 					"enableStaging": false,
 					"dataIntegrationUnits": 0,
