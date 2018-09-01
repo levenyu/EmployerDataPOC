@@ -37,6 +37,10 @@
 									"value": "@pipeline().parameters.SourceFileName",
 									"type": "Expression"
 								}
+							},
+							"TestMode": {
+								"type": "Byte",
+								"value": "0"
 							}
 						}
 					},
