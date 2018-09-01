@@ -26,10 +26,13 @@
 			}
 		},
 		"type": "AzureBlob",
-		"structure": {
-			"value": "@dataset().Structure",
-			"type": "Expression"
-		},
+		"structure": [
+			{
+				"name": "Prop_0",
+				"type": "String",
+				"description": "XML Data"
+			}
+		],
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
