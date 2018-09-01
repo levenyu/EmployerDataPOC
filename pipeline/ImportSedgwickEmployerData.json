@@ -1,7 +1,7 @@
 {
 	"name": "ImportSedgwickEmployerData",
 	"properties": {
-		"description": "Import Sedgwick Employer Data",
+		"description": "Import Sedgwick Employer Data from XML data source file in the Azure BLOB storage to the PolarisEtl ASD.",
 		"activities": [
 			{
 				"name": "CopyXmlToASD",
@@ -38,7 +38,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "EmployerDataSource",
+						"referenceName": "SedgwickEmployerDataSource",
 						"type": "DatasetReference",
 						"parameters": {
 							"SourceFileName": {
