@@ -39,18 +39,12 @@
 				"columnDelimiter": "\u0001",
 				"rowDelimiter": "",
 				"nullValue": "\\N",
-				"treatEmptyAsNull": true,
+				"treatEmptyAsNull": false,
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": {
-				"value": "@dataset().SourceFileName",
-				"type": "Expression"
-			},
-			"folderPath": {
-				"value": "@dataset().SourceFolderName",
-				"type": "Expression"
-			}
+			"fileName": "SedgwickClaimFile_201808260955.xml",
+			"folderPath": "employer"
 		}
 	}
 }
