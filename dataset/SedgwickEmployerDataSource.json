@@ -26,13 +26,10 @@
 			}
 		},
 		"type": "AzureBlob",
-		"structure": [
-			{
-				"name": "Prop_0",
-				"type": "String",
-				"description": "Data"
-			}
-		],
+		"structure": {
+			"value": "@dataset().Structure",
+			"type": "Expression"
+		},
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
@@ -43,8 +40,14 @@
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": "SedgwickClaimFile_201808260955.xml",
-			"folderPath": "employer"
+			"fileName": {
+				"value": "@dataset().SourceFileName",
+				"type": "Expression"
+			},
+			"folderPath": {
+				"value": "@dataset().SourceFolderName",
+				"type": "Expression"
+			}
 		}
 	}
 }
