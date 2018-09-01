@@ -1,7 +1,7 @@
 {
 	"name": "SedgwickEmployerDataSource",
 	"properties": {
-		"description": "Sedgwick employer data source as XML file in the Employer BLOB container",
+		"description": "Sedgwick employer data source as XML file in the employer BLOB container",
 		"linkedServiceName": {
 			"referenceName": "EmployerDataSource",
 			"type": "LinkedServiceReference"
