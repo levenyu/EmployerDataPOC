@@ -1,0 +1,28 @@
+{
+	"name": "ET-SedgwickEmployerDataImport",
+	"properties": {
+		"description": "Event trigger to import Sedgwick employer data located within claim file dropped on the BLOB storage.",
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ImportSedgwickEmployerData",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"SourceFileName": "@triggerBody().fileName",
+					"SourceFolderName": "@triggerBody().folderPath"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/employer/",
+			"blobPathEndsWith": ".xml",
+			"scope": "/subscriptions/0fbf2902-88ee-416e-a94a-40846db5f2f8/resourceGroups/DWPOC/providers/Microsoft.Storage/storageAccounts/polarisstoragepoc",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
