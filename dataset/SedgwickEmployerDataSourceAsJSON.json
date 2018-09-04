@@ -1,0 +1,54 @@
+{
+	"name": "SedgwickEmployerDataSourceAsJSON",
+	"properties": {
+		"description": "Sedgwick employer data source as JSON file in the employer BLOB container in the inputJSON folder.",
+		"linkedServiceName": {
+			"referenceName": "EmployerDataSource",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"SourceFileName": {
+				"type": "String",
+				"defaultValue": "SedgwickClaimFile.xml"
+			},
+			"SourceFolderName": {
+				"type": "String",
+				"defaultValue": "employer/inputXML"
+			},
+			"Structure": {
+				"type": "String",
+				"defaultValue": [
+					{
+						"name": "Prop_0",
+						"type": "String"
+					}
+				]
+			}
+		},
+		"type": "AzureBlob",
+		"structure": {
+			"value": "@dataset().Structure",
+			"type": "Expression"
+		},
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "\u0001",
+				"rowDelimiter": "→",
+				"quoteChar": "\"",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": false
+			},
+			"fileName": {
+				"value": "@dataset().SourceFileName",
+				"type": "Expression"
+			},
+			"folderPath": {
+				"value": "@dataset().SourceFolderName",
+				"type": "Expression"
+			}
+		}
+	}
+}
