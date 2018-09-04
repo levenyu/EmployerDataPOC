@@ -34,20 +34,14 @@
 			"format": {
 				"type": "TextFormat",
 				"columnDelimiter": "\u0001",
-				"rowDelimiter": "",
+				"rowDelimiter": "~",
 				"nullValue": "\\N",
 				"treatEmptyAsNull": false,
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": {
-				"value": "@dataset().SourceFileName",
-				"type": "Expression"
-			},
-			"folderPath": {
-				"value": "@dataset().SourceFolderName",
-				"type": "Expression"
-			}
+			"fileName": "SedgwickClaimFile.xml",
+			"folderPath": "employer/inputXML"
 		}
 	}
 }
