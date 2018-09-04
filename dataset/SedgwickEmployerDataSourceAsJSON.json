@@ -9,11 +9,11 @@
 		"parameters": {
 			"SourceFileName": {
 				"type": "String",
-				"defaultValue": "SedgwickClaimFile.xml"
+				"defaultValue": "SedgwickClaimListExample.json"
 			},
 			"SourceFolderName": {
 				"type": "String",
-				"defaultValue": "employer/inputXML"
+				"defaultValue": "employer/inputJSON"
 			},
 			"Structure": {
 				"type": "String",
@@ -32,14 +32,8 @@
 		},
 		"typeProperties": {
 			"format": {
-				"type": "TextFormat",
-				"columnDelimiter": "\u0001",
-				"rowDelimiter": "→",
-				"quoteChar": "\"",
-				"nullValue": "\\N",
-				"treatEmptyAsNull": true,
-				"skipLineCount": 0,
-				"firstRowAsHeader": false
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects"
 			},
 			"fileName": {
 				"value": "@dataset().SourceFileName",
