@@ -23,7 +23,7 @@
 			"type": "Expression"
 		},
 		"typeProperties": {
-			"tableName": "SedgwickClaimXML"
+			"tableName": "ImportDataTable"
 		}
 	}
 }
