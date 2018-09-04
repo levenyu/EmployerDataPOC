@@ -33,7 +33,7 @@
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
-				"columnDelimiter": "",
+				"columnDelimiter": "\u0001",
 				"rowDelimiter": "",
 				"quoteChar": "\"",
 				"nullValue": "\\N",
