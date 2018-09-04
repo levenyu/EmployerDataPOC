@@ -42,8 +42,14 @@
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": "SedgwickClaimFile.xml",
-			"folderPath": "employer/inputXML"
+			"fileName": {
+				"value": "@dataset().SourceFileName",
+				"type": "Expression"
+			},
+			"folderPath": {
+				"value": "@dataset().SourceFolderName",
+				"type": "Expression"
+			}
 		}
 	}
 }
