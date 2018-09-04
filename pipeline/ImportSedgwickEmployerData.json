@@ -21,10 +21,6 @@
 					}
 				],
 				"typeProperties": {
-					"source": {
-						"type": "BlobSource",
-						"recursive": true
-					},
 					"sink": {
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
@@ -51,26 +47,6 @@
 						"type": "Expression"
 					}
 				},
-				"inputs": [
-					{
-						"referenceName": "SedgwickEmployerDataSource",
-						"type": "DatasetReference",
-						"parameters": {
-							"SourceFileName": {
-								"value": "@pipeline().parameters.SourceFileName",
-								"type": "Expression"
-							},
-							"SourceFolderName": {
-								"value": "@pipeline().parameters.SourceFolderName",
-								"type": "Expression"
-							},
-							"Structure": {
-								"value": "@pipeline().parameters.SourceDataStructure",
-								"type": "Expression"
-							}
-						}
-					}
-				],
 				"outputs": [
 					{
 						"referenceName": "PolarisEtlASD",
