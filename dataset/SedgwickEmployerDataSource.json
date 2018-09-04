@@ -34,9 +34,11 @@
 			"format": {
 				"type": "TextFormat",
 				"columnDelimiter": "\u0001",
-				"rowDelimiter": "~",
+				"rowDelimiter": "",
+				"quoteChar": "\"",
 				"nullValue": "\\N",
-				"treatEmptyAsNull": false,
+				"encodingName": null,
+				"treatEmptyAsNull": true,
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
