@@ -21,6 +21,10 @@
 					}
 				],
 				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
 					"sink": {
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
@@ -47,6 +51,22 @@
 						"type": "Expression"
 					}
 				},
+				"inputs": [
+					{
+						"referenceName": "SedgwickEmployerDataSource",
+						"type": "DatasetReference",
+						"parameters": {
+							"SourceFileName": "SedgwickClaimFile.xml",
+							"SourceFolderName": "employer/inputXML",
+							"Structure": [
+								{
+									"name": "Prop_0",
+									"type": "String"
+								}
+							]
+						}
+					}
+				],
 				"outputs": [
 					{
 						"referenceName": "PolarisEtlASD",
