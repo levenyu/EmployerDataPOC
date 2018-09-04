@@ -34,7 +34,7 @@
 			"format": {
 				"type": "TextFormat",
 				"columnDelimiter": "\u0001",
-				"rowDelimiter": "",
+				"rowDelimiter": "\u0002",
 				"quoteChar": "\"",
 				"nullValue": "\\N",
 				"encodingName": null,
