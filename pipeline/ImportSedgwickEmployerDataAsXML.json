@@ -1,5 +1,5 @@
 {
-	"name": "ImportSedgwickEmployerData",
+	"name": "ImportSedgwickEmployerDataAsXML",
 	"properties": {
 		"description": "Import Sedgwick Employer Data from XML data source file in the Azure BLOB storage to the PolarisEtl ASD.",
 		"activities": [
