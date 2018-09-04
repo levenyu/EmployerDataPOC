@@ -88,11 +88,11 @@
 		"parameters": {
 			"SourceFileName": {
 				"type": "String",
-				"defaultValue": "SedgwickClaimFile_201808260955.xml"
+				"defaultValue": "SedgwickClaimFile.xml"
 			},
 			"SourceFolderName": {
 				"type": "String",
-				"defaultValue": "employer"
+				"defaultValue": "employer/inputXML"
 			},
 			"SourceDataStructure": {
 				"type": "String",
