@@ -23,7 +23,7 @@
 			"type": "Expression"
 		},
 		"typeProperties": {
-			"tableName": "master.SedgwickClaimXML"
+			"tableName": "SedgwickClaimXML"
 		}
 	}
 }
