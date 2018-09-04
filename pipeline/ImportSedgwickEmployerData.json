@@ -29,7 +29,7 @@
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
 						"sqlWriterStoredProcedureName": "master.uspImportSedgwickClaimData",
-						"sqlWriterTableType": "udttSedgwickClaimData",
+						"sqlWriterTableType": "master.udttSedgwickClaimData",
 						"storedProcedureParameters": {
 							"SourceXmlFileName": {
 								"type": "String",
