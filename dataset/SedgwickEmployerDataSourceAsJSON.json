@@ -14,15 +14,6 @@
 			"SourceFolderName": {
 				"type": "String",
 				"defaultValue": "employer/inputJSON"
-			},
-			"Structure": {
-				"type": "String",
-				"defaultValue": [
-					{
-						"name": "Prop_0",
-						"type": "String"
-					}
-				]
 			}
 		},
 		"type": "AzureBlob",
