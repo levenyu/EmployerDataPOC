@@ -46,18 +46,9 @@
 						"referenceName": "SedgwickEmployerDataSourceAsJSON",
 						"type": "DatasetReference",
 						"parameters": {
-							"SourceFileName": {
-								"value": "@pipeline().parameters.SourceFileName",
-								"type": "Expression"
-							},
-							"SourceFolderName": {
-								"value": "@pipeline().parameters.SourceFolderName",
-								"type": "Expression"
-							},
-							"Structure": {
-								"value": "@pipeline().parameters.SourceDataStructure",
-								"type": "Expression"
-							}
+							"SourceFileName": "SedgwickClaimListExample.json",
+							"SourceFolderName": "employer/inputJSON",
+							"Structure": "[{\"name\":\"name\",\"type\":\"String\",\"description\":\"Employer Name\"},{\"name\":\"FEIN\",\"type\":\"String\",\"description\":\"Employer FEIN\"},{\"name\":\"uniqueId\",\"type\":\"String\",\"description\":\"Employer Unique ID\"},{\"name\":\"line1\",\"type\":\"String\",\"description\":\"Address line 1\"},{\"name\":\"line2\",\"type\":\"String\",\"description\":\"Address line 2\"},{\"name\":\"city\",\"type\":\"String\",\"description\":\"City\"},{\"name\":\"state\",\"type\":\"String\",\"description\":\"State\"},{\"name\":\"zip\",\"type\":\"String\",\"description\":\"Zip\"},{\"name\":\"country\",\"type\":\"String\",\"description\":\"Country\"}]"
 						}
 					}
 				],
@@ -88,7 +79,7 @@
 				"type": "String",
 				"defaultValue": [
 					{
-						"name": "Name",
+						"name": "name",
 						"type": "String",
 						"description": "Employer Name"
 					},
@@ -98,37 +89,37 @@
 						"description": "Employer FEIN"
 					},
 					{
-						"name": "UniqueId",
+						"name": "uniqueId",
 						"type": "String",
 						"description": "Employer Unique ID"
 					},
 					{
-						"name": "AddrLine1",
+						"name": "line1",
 						"type": "String",
 						"description": "Address line 1"
 					},
 					{
-						"name": "AddrLine2",
+						"name": "line2",
 						"type": "String",
 						"description": "Address line 2"
 					},
 					{
-						"name": "City",
+						"name": "city",
 						"type": "String",
 						"description": "City"
 					},
 					{
-						"name": "State",
+						"name": "state",
 						"type": "String",
 						"description": "State"
 					},
 					{
-						"name": "Zip",
+						"name": "zip",
 						"type": "String",
 						"description": "Zip"
 					},
 					{
-						"name": "Country",
+						"name": "country",
 						"type": "String",
 						"description": "Country"
 					}
