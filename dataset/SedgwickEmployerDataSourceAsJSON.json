@@ -35,12 +35,12 @@
 				"type": "JsonFormat",
 				"filePattern": "setOfObjects",
 				"jsonPathDefinition": {
-					"ClaimList.Claim.ClaimExpanded.Content.claimExpanded.employer.name": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['name']",
-					"ClaimList.Claim.ClaimExpanded.Content.claimExpanded.employer.FEIN": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['FEIN']",
-					"ClaimList.Claim.ClaimExpanded.Content.claimExpanded.employer.uniqueId": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['uniqueId']",
-					"ClaimList.Claim.ClaimExpanded.Content.claimExpanded.employer.address.line1": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['line1']",
-					"ClaimList.Claim.ClaimExpanded.Content.claimExpanded.employer.address.line2": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['line2']",
-					"ClaimList.Claim.ClaimExpanded.Content.claimExpanded.employer.address.city": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['city']",
+					"EmployerName": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['name']",
+					"EmployerFEIN": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['FEIN']",
+					"EmployerUniqueId": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['uniqueId']",
+					"EmployerAddressLine1": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['line1']",
+					"EmployerAddressLine2": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['line2']",
+					"EmployerAddressCity": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['city']",
 					"ClaimList.Claim.ClaimExpanded.Content.claimExpanded.employer.address.state": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['state']",
 					"ClaimList.Claim.ClaimExpanded.Content.claimExpanded.employer.address.zip": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['zip']",
 					"ClaimList.Claim.ClaimExpanded.Content.claimExpanded.employer.address.country": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['country']"
