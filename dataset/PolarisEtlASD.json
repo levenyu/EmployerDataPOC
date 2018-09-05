@@ -11,8 +11,49 @@
 				"type": "String",
 				"defaultValue": [
 					{
-						"name": "XMLData",
-						"type": "String"
+						"name": "EmployerName",
+						"type": "String",
+						"description": "Employer Name"
+					},
+					{
+						"name": "EmployerFEIN",
+						"type": "String",
+						"description": "Employer FEIN"
+					},
+					{
+						"name": "EmployerUniqueId",
+						"type": "String",
+						"description": "Employer Unique ID"
+					},
+					{
+						"name": "EmployerAddressLine1",
+						"type": "String",
+						"description": "Address line 1"
+					},
+					{
+						"name": "EmployerAddressLine2",
+						"type": "String",
+						"description": "Address line 2"
+					},
+					{
+						"name": "EmployerCity",
+						"type": "String",
+						"description": "City"
+					},
+					{
+						"name": "EmployerState",
+						"type": "String",
+						"description": "State"
+					},
+					{
+						"name": "EmployerZip",
+						"type": "String",
+						"description": "Zip"
+					},
+					{
+						"name": "EmployerCountry",
+						"type": "String",
+						"description": "Country"
 					}
 				]
 			}
@@ -23,7 +64,7 @@
 			"type": "Expression"
 		},
 		"typeProperties": {
-			"tableName": "ImportDataTable"
+			"tableName": "master.Employer"
 		}
 	}
 }
