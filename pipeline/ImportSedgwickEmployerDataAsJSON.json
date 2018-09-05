@@ -15,10 +15,6 @@
 					"secureInput": false
 				},
 				"typeProperties": {
-					"source": {
-						"type": "BlobSource",
-						"recursive": true
-					},
 					"sink": {
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
@@ -41,17 +37,6 @@
 						"type": "Expression"
 					}
 				},
-				"inputs": [
-					{
-						"referenceName": "SedgwickEmployerDataSourceAsJSON",
-						"type": "DatasetReference",
-						"parameters": {
-							"SourceFileName": "SedgwickClaimListExample.json",
-							"SourceFolderName": "employer/inputJSON",
-							"Structure": "[{\"name\":\"name\",\"type\":\"String\",\"description\":\"Employer Name\"},{\"name\":\"FEIN\",\"type\":\"String\",\"description\":\"Employer FEIN\"},{\"name\":\"uniqueId\",\"type\":\"String\",\"description\":\"Employer Unique ID\"},{\"name\":\"line1\",\"type\":\"String\",\"description\":\"Address line 1\"},{\"name\":\"line2\",\"type\":\"String\",\"description\":\"Address line 2\"},{\"name\":\"city\",\"type\":\"String\",\"description\":\"City\"},{\"name\":\"state\",\"type\":\"String\",\"description\":\"State\"},{\"name\":\"zip\",\"type\":\"String\",\"description\":\"Zip\"},{\"name\":\"country\",\"type\":\"String\",\"description\":\"Country\"}]"
-						}
-					}
-				],
 				"outputs": [
 					{
 						"referenceName": "PolarisEtlASD",
@@ -180,15 +165,15 @@
 				"defaultValue": {
 					"type": "TabularTranslator",
 					"columnMappings": {
-						"Name": "EmployerName",
+						"name": "EmployerName",
 						"FEIN": "EmployerFEIN",
-						"UniqueId": "EmployerUniqueId",
-						"AddrLine1": "EmployerAddressLine1",
-						"AddrLine2": "EmployerAddressLine2",
-						"City": "EmployerCity",
-						"State": "EmployerState",
-						"Zip": "EmployerZip",
-						"Country": "EmployerCountry"
+						"uniqueId": "EmployerUniqueId",
+						"line1": "EmployerAddressLine1",
+						"line2": "EmployerAddressLine2",
+						"city": "EmployerCity",
+						"state": "EmployerState",
+						"zip": "EmployerZip",
+						"country": "EmployerCountry"
 					}
 				}
 			}
