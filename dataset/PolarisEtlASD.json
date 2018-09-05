@@ -56,6 +56,10 @@
 						"description": "Country"
 					}
 				]
+			},
+			"TargetTableName": {
+				"type": "String",
+				"defaultValue": "ImportDataTable"
 			}
 		},
 		"type": "AzureSqlTable",
@@ -64,7 +68,10 @@
 			"type": "Expression"
 		},
 		"typeProperties": {
-			"tableName": "ImportDataTable"
+			"tableName": {
+				"value": "@dataset().TargetTableName",
+				"type": "Expression"
+			}
 		}
 	}
 }
