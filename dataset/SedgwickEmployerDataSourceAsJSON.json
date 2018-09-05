@@ -30,7 +30,6 @@
 				"filePattern": "setOfObjects",
 				"jsonNodeReference": "$.['ClaimList']['Claim']",
 				"jsonPathDefinition": {
-					"ClaimList.Claim": "$.['ClaimList']['Claim']",
 					"name": "['ClaimExpanded']['Content']['claimExpanded']['employer']['name']",
 					"FEIN": "['ClaimExpanded']['Content']['claimExpanded']['employer']['FEIN']",
 					"line1": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['line1']",
