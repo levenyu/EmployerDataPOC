@@ -16,7 +16,7 @@
 				"defaultValue": "employer/inputJSON"
 			},
 			"Structure": {
-				"defaultValue": "[{\"name\":\"name\",\"type\":\"String\",\"description\":\"Employer Name\"},{\"name\":\"FEIN\",\"type\":\"String\",\"description\":\"Employer FEIN\"},{\"name\":\"uniqueId\",\"type\":\"String\",\"description\":\"Employer Unique ID\"},{\"name\":\"line1\",\"type\":\"String\",\"description\":\"Address line 1\"},{\"name\":\"line2\",\"type\":\"String\",\"description\":\"Address line 2\"},{\"name\":\"city\",\"type\":\"String\",\"description\":\"City\"},{\"name\":\"state\",\"type\":\"String\",\"description\":\"State\"},{\"name\":\"zip\",\"type\":\"String\",\"description\":\"Zip\"},{\"name\":\"country\",\"type\":\"String\",\"description\":\"Country\"}]"
+				"defaultValue": "[{\"name\":\"name\",\"type\":\"String\"},{\"name\":\"FEIN\",\"type\":\"String\"},{\"name\":\"uniqueId\",\"type\":\"String\"},{\"name\":\"line1\",\"type\":\"String\"},{\"name\":\"line2\",\"type\":\"String\"},{\"name\":\"city\",\"type\":\"String\"},{\"name\":\"state\",\"type\":\"String\"},{\"name\":\"zip\",\"type\":\"String\"},{\"name\":\"country\",\"type\":\"String\"}]"
 			}
 		},
 		"type": "AzureBlob",
@@ -41,14 +41,8 @@
 					"uniqueId": "['ClaimExpanded']['Content']['claimExpanded']['employer']['uniqueId']"
 				}
 			},
-			"fileName": {
-				"value": "@dataset().SourceFileName",
-				"type": "Expression"
-			},
-			"folderPath": {
-				"value": "@dataset().SourceFolderName",
-				"type": "Expression"
-			}
+			"fileName": "SedgwickClaimListExample.json",
+			"folderPath": "employer/inputJSON"
 		}
 	}
 }
