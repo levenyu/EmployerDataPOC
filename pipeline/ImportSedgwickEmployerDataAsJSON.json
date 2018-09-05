@@ -21,10 +21,6 @@
 					}
 				],
 				"typeProperties": {
-					"source": {
-						"type": "BlobSource",
-						"recursive": true
-					},
 					"sink": {
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
@@ -51,16 +47,6 @@
 						"type": "Expression"
 					}
 				},
-				"inputs": [
-					{
-						"referenceName": "SedgwickEmployerDataSourceAsJSON",
-						"type": "DatasetReference",
-						"parameters": {
-							"SourceFileName": "SedgwickClaimListExample.json",
-							"SourceFolderName": "employer/inputJSON"
-						}
-					}
-				],
 				"outputs": [
 					{
 						"referenceName": "PolarisEtlASD",
@@ -78,7 +64,7 @@
 		"parameters": {
 			"SourceFileName": {
 				"type": "String",
-				"defaultValue": "SedgwickClaimFile.json"
+				"defaultValue": "SedgwickClaimListExample.json"
 			},
 			"SourceFolderName": {
 				"type": "String",
