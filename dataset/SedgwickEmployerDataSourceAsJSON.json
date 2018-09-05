@@ -17,10 +17,53 @@
 			}
 		},
 		"type": "AzureBlob",
-		"structure": {
-			"value": "@dataset().Structure",
-			"type": "Expression"
-		},
+		"structure": [
+			{
+				"name": "Name",
+				"type": "String",
+				"description": "Employer Name"
+			},
+			{
+				"name": "FEIN",
+				"type": "String",
+				"description": "Employer FEIN"
+			},
+			{
+				"name": "UniqueId",
+				"type": "String",
+				"description": "Employer Unique ID"
+			},
+			{
+				"name": "AddrLine1",
+				"type": "String",
+				"description": "Address line 1"
+			},
+			{
+				"name": "AddrLine2",
+				"type": "String",
+				"description": "Address line 2"
+			},
+			{
+				"name": "City",
+				"type": "String",
+				"description": "City"
+			},
+			{
+				"name": "State",
+				"type": "String",
+				"description": "State"
+			},
+			{
+				"name": "Zip",
+				"type": "String",
+				"description": "Zip"
+			},
+			{
+				"name": "Country",
+				"type": "String",
+				"description": "Country"
+			}
+		],
 		"typeProperties": {
 			"format": {
 				"type": "JsonFormat",
