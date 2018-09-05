@@ -16,7 +16,45 @@
 				"defaultValue": "employer/inputJSON"
 			},
 			"Structure": {
-				"defaultValue": "[{\"name\":\"name\",\"type\":\"String\"},{\"name\":\"FEIN\",\"type\":\"String\"},{\"name\":\"uniqueId\",\"type\":\"String\"},{\"name\":\"line1\",\"type\":\"String\"},{\"name\":\"line2\",\"type\":\"String\"},{\"name\":\"city\",\"type\":\"String\"},{\"name\":\"state\",\"type\":\"String\"},{\"name\":\"zip\",\"type\":\"String\"},{\"name\":\"country\",\"type\":\"String\"}]"
+				"type": "Object",
+				"defaultValue": [
+					{
+						"name": "name",
+						"type": "String"
+					},
+					{
+						"name": "FEIN",
+						"type": "String"
+					},
+					{
+						"name": "uniqueId",
+						"type": "String"
+					},
+					{
+						"name": "line1",
+						"type": "String"
+					},
+					{
+						"name": "line2",
+						"type": "String"
+					},
+					{
+						"name": "city",
+						"type": "String"
+					},
+					{
+						"name": "state",
+						"type": "String"
+					},
+					{
+						"name": "zip",
+						"type": "String"
+					},
+					{
+						"name": "country",
+						"type": "String"
+					}
+				]
 			}
 		},
 		"type": "AzureBlob",
@@ -44,5 +82,6 @@
 			"fileName": "SedgwickClaimListExample.json",
 			"folderPath": "employer/inputJSON"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
