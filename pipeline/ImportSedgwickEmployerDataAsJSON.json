@@ -14,12 +14,6 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "DataMappingStructure",
-						"value": "{\"type\":\"TabularTranslator\",\"columnMappings\":{\"Prop_0\":\"XMLData\"}}"
-					}
-				],
 				"typeProperties": {
 					"source": {
 						"type": "BlobSource",
@@ -56,9 +50,18 @@
 						"referenceName": "SedgwickEmployerDataSourceAsJSON",
 						"type": "DatasetReference",
 						"parameters": {
-							"SourceFileName": "SedgwickClaimListExample.json",
-							"SourceFolderName": "employer/inputJSON",
-							"Structure": "[{\"name\":\"Name\",\"type\":\"String\",\"description\":\"Employer Name\"},{\"name\":\"FEIN\",\"type\":\"String\",\"description\":\"Employer FEIN\"},{\"name\":\"UniqueId\",\"type\":\"String\",\"description\":\"Employer Unique ID\"},{\"name\":\"AddrLine1\",\"type\":\"String\",\"description\":\"Address line 1\"},{\"name\":\"AddrLine2\",\"type\":\"String\",\"description\":\"Address line 2\"},{\"name\":\"City\",\"type\":\"String\",\"description\":\"City\"},{\"name\":\"State\",\"type\":\"String\",\"description\":\"State\"},{\"name\":\"Zip\",\"type\":\"String\",\"description\":\"Zip\"},{\"name\":\"Country\",\"type\":\"String\",\"description\":\"Country\"}]"
+							"SourceFileName": {
+								"value": "@pipeline().parameters.SourceFileName",
+								"type": "Expression"
+							},
+							"SourceFolderName": {
+								"value": "@pipeline().parameters.SourceFolderName",
+								"type": "Expression"
+							},
+							"Structure": {
+								"value": "@pipeline().parameters.SourceDataStructure",
+								"type": "Expression"
+							}
 						}
 					}
 				],
