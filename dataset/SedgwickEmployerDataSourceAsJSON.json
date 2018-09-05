@@ -88,8 +88,14 @@
 					"uniqueId": "['ClaimExpanded']['Content']['claimExpanded']['employer']['uniqueId']"
 				}
 			},
-			"fileName": "SedgwickClaimListExample.json",
-			"folderPath": "employer/inputJSON"
+			"fileName": {
+				"value": "@dataset().SourceFileName",
+				"type": "Expression"
+			},
+			"folderPath": {
+				"value": "@dataset().SourceFolderName",
+				"type": "Expression"
+			}
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
