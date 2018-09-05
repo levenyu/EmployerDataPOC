@@ -20,39 +20,48 @@
 				"defaultValue": [
 					{
 						"name": "name",
-						"type": "String"
+						"type": "String",
+						"description": "Employer Name"
 					},
 					{
 						"name": "FEIN",
-						"type": "String"
+						"type": "String",
+						"description": "Employer FEIN"
 					},
 					{
 						"name": "uniqueId",
-						"type": "String"
+						"type": "String",
+						"description": "Employer Unique ID"
 					},
 					{
 						"name": "line1",
-						"type": "String"
+						"type": "String",
+						"description": "Address line 1"
 					},
 					{
 						"name": "line2",
-						"type": "String"
+						"type": "String",
+						"description": "Address line 2"
 					},
 					{
 						"name": "city",
-						"type": "String"
+						"type": "String",
+						"description": "City"
 					},
 					{
 						"name": "state",
-						"type": "String"
+						"type": "String",
+						"description": "State"
 					},
 					{
 						"name": "zip",
-						"type": "String"
+						"type": "String",
+						"description": "Zip"
 					},
 					{
 						"name": "country",
-						"type": "String"
+						"type": "String",
+						"description": "Country"
 					}
 				]
 			}
