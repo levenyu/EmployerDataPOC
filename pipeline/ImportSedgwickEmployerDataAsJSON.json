@@ -61,7 +61,7 @@
 				"defaultValue": "employer/inputJSON"
 			},
 			"SourceDataStructure": {
-				"type": "String",
+				"type": "Object",
 				"defaultValue": [
 					{
 						"name": "name",
@@ -111,7 +111,7 @@
 				]
 			},
 			"SinkDataStructure": {
-				"type": "String",
+				"type": "Object",
 				"defaultValue": [
 					{
 						"name": "EmployerName",
@@ -161,7 +161,7 @@
 				]
 			},
 			"DataMappingStructure": {
-				"type": "String",
+				"type": "Object",
 				"defaultValue": {
 					"type": "TabularTranslator",
 					"columnMappings": {
