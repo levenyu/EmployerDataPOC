@@ -53,17 +53,11 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SedgwickEmployerDataSource",
+						"referenceName": "SedgwickEmployerDataSourceAsJSON",
 						"type": "DatasetReference",
 						"parameters": {
-							"SourceFileName": "SedgwickClaimFile.xml",
-							"SourceFolderName": "employer/inputXML",
-							"Structure": [
-								{
-									"name": "Prop_0",
-									"type": "String"
-								}
-							]
+							"SourceFileName": "SedgwickClaimListExample.json",
+							"SourceFolderName": "employer/inputJSON"
 						}
 					}
 				],
