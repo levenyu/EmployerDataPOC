@@ -15,6 +15,10 @@
 					"secureInput": false
 				},
 				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
 					"sink": {
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
@@ -37,6 +41,54 @@
 						"type": "Expression"
 					}
 				},
+				"inputs": [
+					{
+						"referenceName": "SedgwickEmployerDataSourceAsJSON",
+						"type": "DatasetReference",
+						"parameters": {
+							"SourceFileName": "SedgwickClaimListExample.json",
+							"SourceFolderName": "employer/inputJSON",
+							"Structure": [
+								{
+									"name": "name",
+									"type": "String"
+								},
+								{
+									"name": "FEIN",
+									"type": "String"
+								},
+								{
+									"name": "uniqueId",
+									"type": "String"
+								},
+								{
+									"name": "line1",
+									"type": "String"
+								},
+								{
+									"name": "line2",
+									"type": "String"
+								},
+								{
+									"name": "city",
+									"type": "String"
+								},
+								{
+									"name": "state",
+									"type": "String"
+								},
+								{
+									"name": "zip",
+									"type": "String"
+								},
+								{
+									"name": "country",
+									"type": "String"
+								}
+							]
+						}
+					}
+				],
 				"outputs": [
 					{
 						"referenceName": "PolarisEtlASD",
