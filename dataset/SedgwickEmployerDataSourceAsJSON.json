@@ -16,7 +16,7 @@
 				"defaultValue": "employer/inputJSON"
 			},
 			"Structure": {
-				"defaultValue": "[{\"name\":\"Name\",\"type\":\"String\",\"description\":\"Employer Name\"},{\"name\":\"FEIN\",\"type\":\"String\",\"description\":\"Employer FEIN\"},{\"name\":\"UniqueId\",\"type\":\"String\",\"description\":\"Employer Unique ID\"},{\"name\":\"AddrLine1\",\"type\":\"String\",\"description\":\"Address line 1\"},{\"name\":\"AddrLine2\",\"type\":\"String\",\"description\":\"Address line 2\"},{\"name\":\"City\",\"type\":\"String\",\"description\":\"City\"},{\"name\":\"State\",\"type\":\"String\",\"description\":\"State\"},{\"name\":\"Zip\",\"type\":\"String\",\"description\":\"Zip\"},{\"name\":\"Country\",\"type\":\"String\",\"description\":\"Country\"}]"
+				"defaultValue": "[{\"name\":\"name\",\"type\":\"String\",\"description\":\"Employer Name\"},{\"name\":\"FEIN\",\"type\":\"String\",\"description\":\"Employer FEIN\"},{\"name\":\"uniqueId\",\"type\":\"String\",\"description\":\"Employer Unique ID\"},{\"name\":\"line1\",\"type\":\"String\",\"description\":\"Address line 1\"},{\"name\":\"line2\",\"type\":\"String\",\"description\":\"Address line 2\"},{\"name\":\"city\",\"type\":\"String\",\"description\":\"City\"},{\"name\":\"state\",\"type\":\"String\",\"description\":\"State\"},{\"name\":\"zip\",\"type\":\"String\",\"description\":\"Zip\"},{\"name\":\"country\",\"type\":\"String\",\"description\":\"Country\"}]"
 			}
 		},
 		"type": "AzureBlob",
@@ -28,26 +28,22 @@
 			"format": {
 				"type": "JsonFormat",
 				"filePattern": "setOfObjects",
+				"jsonNodeReference": "$.['ClaimList']['Claim']",
 				"jsonPathDefinition": {
-					"Name": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['name']",
-					"FEIN": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['FEIN']",
-					"UniqueId": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['uniqueId']",
-					"AddrLine1": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['line1']",
-					"AddrLine2": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['line2']",
-					"City": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['city']",
-					"State": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['state']",
-					"Zip": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['zip']",
-					"Country": "$.['ClaimList']['Claim']['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['country']"
+					"ClaimList.Claim": "$.['ClaimList']['Claim']",
+					"name": "['ClaimExpanded']['Content']['claimExpanded']['employer']['name']",
+					"FEIN": "['ClaimExpanded']['Content']['claimExpanded']['employer']['FEIN']",
+					"line1": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['line1']",
+					"line2": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['line2']",
+					"city": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['city']",
+					"state": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['state']",
+					"zip": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['zip']",
+					"country": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['country']",
+					"uniqueId": "['ClaimExpanded']['Content']['claimExpanded']['employer']['uniqueId']"
 				}
 			},
-			"fileName": {
-				"value": "@dataset().SourceFileName",
-				"type": "Expression"
-			},
-			"folderPath": {
-				"value": "@dataset().SourceFolderName",
-				"type": "Expression"
-			}
+			"fileName": "SedgwickClaimListExample.json",
+			"folderPath": "employer/inputJSON"
 		}
 	}
 }
