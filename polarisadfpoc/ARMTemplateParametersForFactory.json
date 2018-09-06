@@ -1,1 +1,57 @@
-{}
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "polarisadfpoc"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"EmployerDataSource_connectionString": {
+			"value": ""
+		},
+		"PolarisEtlASD_connectionString": {
+			"value": ""
+		},
+		"SqlServer1_connectionString": {
+			"value": ""
+		},
+		"DestinationDataset_6xb_properties_typeProperties_fileName": {
+			"value": "Provider.csv"
+		},
+		"DestinationDataset_6xb_properties_typeProperties_folderPath": {
+			"value": "profisee"
+		},
+		"SedgwickEmployerDataSourceAsJSON_properties_typeProperties_fileName": {
+			"value": "@dataset().SourceFileName"
+		},
+		"SedgwickEmployerDataSourceAsJSON_properties_typeProperties_folderPath": {
+			"value": "@dataset().SourceFolderName"
+		},
+		"SedgwickEmployerDataSourceAsXML_properties_typeProperties_fileName": {
+			"value": "@dataset().SourceFileName"
+		},
+		"SedgwickEmployerDataSourceAsXML_properties_typeProperties_folderPath": {
+			"value": "@dataset().SourceFolderName"
+		},
+		"ET-SedgwickEmployerDataImport_properties_ImportSedgwickEmployerDataAsJSON_parameters_SourceFileName": {
+			"value": "@triggerBody().fileName"
+		},
+		"ET-SedgwickEmployerDataImport_properties_ImportSedgwickEmployerDataAsJSON_parameters_SourceFolderName": {
+			"value": "@triggerBody().folderPath"
+		},
+		"ET-SedgwickEmployerDataImport_properties_typeProperties_scope": {
+			"value": "/subscriptions/0fbf2902-88ee-416e-a94a-40846db5f2f8/resourceGroups/DWPOC/providers/Microsoft.Storage/storageAccounts/polarisstoragepoc"
+		},
+		"ET-SedgwickEmployerDataImportForXmlFile_properties_ImportSedgwickEmployerDataAsXML_parameters_SourceFileName": {
+			"value": "@triggerBody().fileName"
+		},
+		"ET-SedgwickEmployerDataImportForXmlFile_properties_ImportSedgwickEmployerDataAsXML_parameters_SourceFolderName": {
+			"value": "@triggerBody().folderPath"
+		},
+		"ET-SedgwickEmployerDataImportForXmlFile_properties_typeProperties_scope": {
+			"value": "/subscriptions/0fbf2902-88ee-416e-a94a-40846db5f2f8/resourceGroups/DWPOC/providers/Microsoft.Storage/storageAccounts/polarisstoragepoc"
+		}
+	}
+}
