@@ -880,7 +880,7 @@
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/employer/blobs/inputJSON/",
-					"blobPathEndsWith": "SedgwickClaim*.json",
+					"blobPathEndsWith": ".json",
 					"scope": "[parameters('ET-SedgwickEmployerDataImport_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
