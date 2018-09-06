@@ -56,14 +56,18 @@
 						"referenceName": "SedgwickEmployerDataSource",
 						"type": "DatasetReference",
 						"parameters": {
-							"SourceFileName": "SedgwickClaimFile.xml",
-							"SourceFolderName": "employer/inputXML",
-							"Structure": [
-								{
-									"name": "Prop_0",
-									"type": "String"
-								}
-							]
+							"SourceFileName": {
+								"value": "@pipeline().parameters.SourceFileName",
+								"type": "Expression"
+							},
+							"SourceFolderName": {
+								"value": "@pipeline().parameters.SourceFolderName",
+								"type": "Expression"
+							},
+							"Structure": {
+								"value": "@pipeline().parameters.SourceDataStructure",
+								"type": "Expression"
+							}
 						}
 					}
 				],
@@ -75,7 +79,8 @@
 							"Structure": {
 								"value": "@pipeline().parameters.SinkDataStructure",
 								"type": "Expression"
-							}
+							},
+							"TargetTableName": "ImportDataTable"
 						}
 					}
 				]
