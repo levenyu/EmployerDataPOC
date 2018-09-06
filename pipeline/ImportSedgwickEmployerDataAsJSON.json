@@ -46,46 +46,18 @@
 						"referenceName": "SedgwickEmployerDataSourceAsJSON",
 						"type": "DatasetReference",
 						"parameters": {
-							"SourceFileName": "SedgwickClaimListExample.json",
-							"SourceFolderName": "employer/inputJSON",
-							"Structure": [
-								{
-									"name": "name",
-									"type": "String"
-								},
-								{
-									"name": "FEIN",
-									"type": "String"
-								},
-								{
-									"name": "uniqueId",
-									"type": "String"
-								},
-								{
-									"name": "line1",
-									"type": "String"
-								},
-								{
-									"name": "line2",
-									"type": "String"
-								},
-								{
-									"name": "city",
-									"type": "String"
-								},
-								{
-									"name": "state",
-									"type": "String"
-								},
-								{
-									"name": "zip",
-									"type": "String"
-								},
-								{
-									"name": "country",
-									"type": "String"
-								}
-							]
+							"SourceFileName": {
+								"value": "@pipeline().parameters.SourceFileName",
+								"type": "Expression"
+							},
+							"SourceFolderName": {
+								"value": "@pipeline().parameters.SourceFolderName",
+								"type": "Expression"
+							},
+							"Structure": {
+								"value": "@pipeline().parameters.SourceDataStructure",
+								"type": "Expression"
+							}
 						}
 					}
 				],
@@ -97,7 +69,8 @@
 							"Structure": {
 								"value": "@pipeline().parameters.SinkDataStructure",
 								"type": "Expression"
-							}
+							},
+							"TargetTableName": "ImportDataTable"
 						}
 					}
 				]
