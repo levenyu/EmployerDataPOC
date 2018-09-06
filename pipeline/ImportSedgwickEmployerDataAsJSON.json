@@ -22,8 +22,14 @@
 					"sink": {
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
-						"sqlWriterStoredProcedureName": "master.uspImportSedgwickEmployerData",
-						"sqlWriterTableType": "master.udttSedgwickEmployerData",
+						"sqlWriterStoredProcedureName": {
+							"value": "@pipeline().parameters.SinkProcedureName",
+							"type": "Expression"
+						},
+						"sqlWriterTableType": {
+							"value": "@pipeline().parameters.SinkUserDefinedTableType",
+							"type": "Expression"
+						},
 						"storedProcedureParameters": {
 							"SourceFileName": {
 								"type": "String",
@@ -212,6 +218,10 @@
 			"SinkProcedureName": {
 				"type": "String",
 				"defaultValue": "master.uspImportSedgwickEmployerData"
+			},
+			"SinkUserDefinedTableType": {
+				"type": "String",
+				"defaultValue": "master.udttSedgwickEmployerData"
 			}
 		}
 	}
