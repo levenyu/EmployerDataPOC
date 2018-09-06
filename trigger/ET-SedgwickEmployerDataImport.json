@@ -6,16 +6,6 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "ImportSedgwickEmployerDataAsXML",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"SourceFileName": "@triggerBody().fileName",
-					"SourceFolderName": "@triggerBody().folderPath"
-				}
-			},
-			{
-				"pipelineReference": {
 					"referenceName": "ImportSedgwickEmployerDataAsJSON",
 					"type": "PipelineReference"
 				},
