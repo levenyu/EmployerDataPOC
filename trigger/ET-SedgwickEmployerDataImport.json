@@ -2,7 +2,7 @@
 	"name": "ET-SedgwickEmployerDataImport",
 	"properties": {
 		"description": "Event trigger to import Sedgwick employer data located within claim file dropped on the BLOB storage.",
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipelines": [
 			{
 				"pipelineReference": {
