@@ -91,7 +91,7 @@
 				"defaultValue": "employer/inputXML"
 			},
 			"SourceDataStructure": {
-				"type": "String",
+				"type": "Object",
 				"defaultValue": [
 					{
 						"name": "Prop_0",
@@ -100,7 +100,7 @@
 				]
 			},
 			"SinkDataStructure": {
-				"type": "String",
+				"type": "Object",
 				"defaultValue": [
 					{
 						"name": "XMLData",
@@ -109,7 +109,7 @@
 				]
 			},
 			"DataMappingStructure": {
-				"type": "String",
+				"type": "Object",
 				"defaultValue": {
 					"type": "TabularTranslator",
 					"columnMappings": {
