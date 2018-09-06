@@ -16,7 +16,7 @@
 				"defaultValue": "employer/inputXML"
 			},
 			"Structure": {
-				"type": "String",
+				"type": "Object",
 				"defaultValue": [
 					{
 						"name": "Prop_0",
