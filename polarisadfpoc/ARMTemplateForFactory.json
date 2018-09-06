@@ -864,7 +864,7 @@
 			"properties": {
 				"description": "Event trigger to import Sedgwick employer data located within claim file dropped on the BLOB storage.",
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
