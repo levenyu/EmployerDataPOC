@@ -18,7 +18,7 @@
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/employer/blobs/inputJSON/",
-			"blobPathEndsWith": "SedgwickClaim*.json",
+			"blobPathEndsWith": ".json",
 			"scope": "/subscriptions/0fbf2902-88ee-416e-a94a-40846db5f2f8/resourceGroups/DWPOC/providers/Microsoft.Storage/storageAccounts/polarisstoragepoc",
 			"events": [
 				"Microsoft.Storage.BlobCreated"
