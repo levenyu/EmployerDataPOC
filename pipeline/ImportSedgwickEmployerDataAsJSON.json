@@ -201,6 +201,10 @@
 						"country": "EmployerCountry"
 					}
 				}
+			},
+			"TargetTableName": {
+				"type": "String",
+				"defaultValue": "ImportDataTable"
 			}
 		}
 	}
