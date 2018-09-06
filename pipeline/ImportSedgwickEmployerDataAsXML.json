@@ -47,7 +47,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SedgwickEmployerDataSource",
+						"referenceName": "SedgwickEmployerDataSourceAsXML",
 						"type": "DatasetReference",
 						"parameters": {
 							"SourceFileName": {
