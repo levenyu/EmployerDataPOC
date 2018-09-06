@@ -18,6 +18,10 @@
 				"pipelineReference": {
 					"referenceName": "ImportSedgwickEmployerDataAsJSON",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"SourceFileName": "@triggerBody().fileName",
+					"SourceFolderName": "@triggerBody().folderPath"
 				}
 			}
 		],
