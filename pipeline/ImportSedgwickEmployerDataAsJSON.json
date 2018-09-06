@@ -70,7 +70,10 @@
 								"value": "@pipeline().parameters.SinkDataStructure",
 								"type": "Expression"
 							},
-							"TargetTableName": "ImportDataTable"
+							"TargetTableName": {
+								"value": "@pipeline().parameters.TargetTableName",
+								"type": "Expression"
+							}
 						}
 					}
 				]
@@ -205,6 +208,10 @@
 			"TargetTableName": {
 				"type": "String",
 				"defaultValue": "ImportDataTable"
+			},
+			"SinkProcedureName": {
+				"type": "String",
+				"defaultValue": "master.uspImportSedgwickEmployerData"
 			}
 		}
 	}
