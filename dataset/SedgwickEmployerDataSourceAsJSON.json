@@ -80,6 +80,7 @@
 					"name": "['ClaimExpanded']['Content']['claimExpanded']['employer']['name']",
 					"FEIN": "['ClaimExpanded']['Content']['claimExpanded']['employer']['FEIN']",
 					"line1": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['line1']",
+					"line2": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['line2']",
 					"city": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['city']",
 					"state": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['state']",
 					"zip": "['ClaimExpanded']['Content']['claimExpanded']['employer']['address']['zip']",
