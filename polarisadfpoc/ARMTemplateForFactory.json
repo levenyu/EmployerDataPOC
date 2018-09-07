@@ -692,12 +692,11 @@
 					"format": {
 						"type": "JsonFormat",
 						"filePattern": "setOfObjects",
-						"jsonNodeReference": "$.['ClaimList']['Claim']",
+						"jsonNodeReference": "$.['ns0:ClaimList']['Claim']",
 						"jsonPathDefinition": {
 							"name": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''name'']')]",
 							"FEIN": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''FEIN'']')]",
 							"line1": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''address''][''line1'']')]",
-							"line2": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''address''][''line2'']')]",
 							"city": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''address''][''city'']')]",
 							"state": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''address''][''state'']')]",
 							"zip": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''address''][''zip'']')]",
