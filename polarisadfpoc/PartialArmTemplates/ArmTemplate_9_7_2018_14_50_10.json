@@ -1,0 +1,119 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "polarisadfpoc"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/SedgwickEmployerDataSourceAsJSON')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Sedgwick employer data source as JSON file in the employer BLOB container in the inputJSON folder.",
+				"linkedServiceName": {
+					"referenceName": "EmployerDataSource",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"SourceFileName": {
+						"type": "String",
+						"defaultValue": "SedgwickClaimListExample.json"
+					},
+					"SourceFolderName": {
+						"type": "String",
+						"defaultValue": "employer/inputJSON"
+					},
+					"Structure": {
+						"type": "Object",
+						"defaultValue": [
+							{
+								"name": "name",
+								"type": "String",
+								"description": "Employer Name"
+							},
+							{
+								"name": "FEIN",
+								"type": "String",
+								"description": "Employer FEIN"
+							},
+							{
+								"name": "uniqueId",
+								"type": "String",
+								"description": "Employer Unique ID"
+							},
+							{
+								"name": "line1",
+								"type": "String",
+								"description": "Address line 1"
+							},
+							{
+								"name": "line2",
+								"type": "String",
+								"description": "Address line 2"
+							},
+							{
+								"name": "city",
+								"type": "String",
+								"description": "City"
+							},
+							{
+								"name": "state",
+								"type": "String",
+								"description": "State"
+							},
+							{
+								"name": "zip",
+								"type": "String",
+								"description": "Zip"
+							},
+							{
+								"name": "country",
+								"type": "String",
+								"description": "Country"
+							}
+						]
+					}
+				},
+				"type": "AzureBlob",
+				"structure": {
+					"value": "@dataset().Structure",
+					"type": "Expression"
+				},
+				"typeProperties": {
+					"format": {
+						"type": "JsonFormat",
+						"filePattern": "setOfObjects",
+						"jsonNodeReference": "$.['ns0:ClaimList']['Claim']",
+						"jsonPathDefinition": {
+							"name": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''name'']')]",
+							"FEIN": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''FEIN'']')]",
+							"line1": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''address''][''line1'']')]",
+							"line2": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''address''][''line2'']')]",
+							"city": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''address''][''city'']')]",
+							"state": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''address''][''state'']')]",
+							"zip": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''address''][''zip'']')]",
+							"country": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''address''][''country'']')]",
+							"uniqueId": "[concat('[', '''ClaimExpanded''][''Content''][''claimExpanded''][''employer''][''uniqueId'']')]"
+						}
+					},
+					"fileName": {
+						"value": "@dataset().SourceFileName",
+						"type": "Expression"
+					},
+					"folderPath": {
+						"value": "@dataset().SourceFolderName",
+						"type": "Expression"
+					}
+				}
+			}
+		}
+	]
+}
