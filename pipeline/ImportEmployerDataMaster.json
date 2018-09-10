@@ -1,0 +1,80 @@
+{
+	"name": "ImportEmployerDataMaster",
+	"properties": {
+		"description": "Import Employer Data Master pipeline",
+		"activities": [
+			{
+				"name": "LookupMetadata",
+				"description": "Lookup metadata from the metadata.DataFactoryLoad table",
+				"type": "Lookup",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "select\n\td.DataFactoryLoadId,\n\td.Pipeline,\n\td.TargetDatabase,\n\td.TargetSink,\n\td.SortOrder,\n\td.SourceStructure,\n\td.TargetStructure,\n\td.ColumnMapping,\n\td.SourceStoredProcedure,\n\td.SourceStoredProcedureTableType\nfrom\n\tmetadata.DataFactoryLoad d\nwhere\n\t1 = 1\n\tand d.Pipeline = 'ImportSedgwickEmployerDataAsJSON'\norder by\n\td.DataFactoryLoadId desc"
+					},
+					"dataset": {
+						"referenceName": "PolarisEtlASD",
+						"type": "DatasetReference",
+						"parameters": {
+							"Structure": [
+								{
+									"name": "EmployerName",
+									"type": "String",
+									"description": "Employer Name"
+								},
+								{
+									"name": "EmployerFEIN",
+									"type": "String",
+									"description": "Employer FEIN"
+								},
+								{
+									"name": "EmployerUniqueId",
+									"type": "String",
+									"description": "Employer Unique ID"
+								},
+								{
+									"name": "EmployerAddressLine1",
+									"type": "String",
+									"description": "Address line 1"
+								},
+								{
+									"name": "EmployerAddressLine2",
+									"type": "String",
+									"description": "Address line 2"
+								},
+								{
+									"name": "EmployerCity",
+									"type": "String",
+									"description": "City"
+								},
+								{
+									"name": "EmployerState",
+									"type": "String",
+									"description": "State"
+								},
+								{
+									"name": "EmployerZip",
+									"type": "String",
+									"description": "Zip"
+								},
+								{
+									"name": "EmployerCountry",
+									"type": "String",
+									"description": "Country"
+								}
+							],
+							"TargetTableName": "master.Employer"
+						}
+					}
+				}
+			}
+		]
+	}
+}
