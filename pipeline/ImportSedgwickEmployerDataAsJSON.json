@@ -7,6 +7,14 @@
 				"name": "CopyJSONToASD",
 				"description": "Copy JSON To ASD",
 				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "LookupMetadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -83,6 +91,77 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "LookupMetadata",
+				"type": "Lookup",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT datafactoryloadid, \n       pipeline, \n       tabletype, \n\t   sourcedatabase,\n       sourcetable, \n\t   targetdatabase,\n       targetsink, \n       sortorder, \n       Isnull(directsourcequery, sourcequery) AS SourceQuery, \n       SourceStructure, \n       SourceStoredProcedure, \n       SourceStoredProcedureTableType, \n       TargetStructure, \n       targetprepsinkscript, \n       ColumnMapping, \n       isactive, \n       ispurge, \n       isincremental \nFROM   metadata.datafactoryload d \nWHERE  1=1 \n\t   and Pipeline = 'ImportSedgwickEmployerDataAsJSON'\norder by datafactoryloadid desc"
+					},
+					"dataset": {
+						"referenceName": "PolarisEtlASD",
+						"type": "DatasetReference",
+						"parameters": {
+							"Structure": [
+								{
+									"name": "EmployerName",
+									"type": "String",
+									"description": "Employer Name"
+								},
+								{
+									"name": "EmployerFEIN",
+									"type": "String",
+									"description": "Employer FEIN"
+								},
+								{
+									"name": "EmployerUniqueId",
+									"type": "String",
+									"description": "Employer Unique ID"
+								},
+								{
+									"name": "EmployerAddressLine1",
+									"type": "String",
+									"description": "Address line 1"
+								},
+								{
+									"name": "EmployerAddressLine2",
+									"type": "String",
+									"description": "Address line 2"
+								},
+								{
+									"name": "EmployerCity",
+									"type": "String",
+									"description": "City"
+								},
+								{
+									"name": "EmployerState",
+									"type": "String",
+									"description": "State"
+								},
+								{
+									"name": "EmployerZip",
+									"type": "String",
+									"description": "Zip"
+								},
+								{
+									"name": "EmployerCountry",
+									"type": "String",
+									"description": "Country"
+								}
+							],
+							"TargetTableName": "ImportDataTable"
+						}
+					}
+				}
 			}
 		],
 		"parameters": {
