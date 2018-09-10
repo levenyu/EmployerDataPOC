@@ -213,7 +213,7 @@
 			},
 			"TargetTableName": {
 				"type": "String",
-				"defaultValue": "ImportDataTable"
+				"defaultValue": "master.Employer"
 			},
 			"SinkProcedureName": {
 				"type": "String",
