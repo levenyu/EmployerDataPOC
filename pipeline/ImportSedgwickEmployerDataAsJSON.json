@@ -207,10 +207,6 @@
 					}
 				}
 			},
-			"TargetTableName": {
-				"type": "String",
-				"defaultValue": "ImportDataTable"
-			},
 			"SinkProcedureName": {
 				"type": "String",
 				"defaultValue": "master.uspImportSedgwickEmployerData"
