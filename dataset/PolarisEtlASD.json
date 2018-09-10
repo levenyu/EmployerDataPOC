@@ -55,7 +55,7 @@
 			"type": "Expression"
 		},
 		"typeProperties": {
-			"tableName": "master.Employer"
+			"tableName": "ImportDataTable"
 		}
 	}
 }
