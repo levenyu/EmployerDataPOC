@@ -1,7 +1,7 @@
 {
 	"name": "ImportSedgwickEmployerDataMaster",
 	"properties": {
-		"description": "This is \"Import Sedgwick Employer Data Master\" pipeline.",
+		"description": "This is \"Import Sedgwick Employer Data\" master pipeline.",
 		"activities": [
 			{
 				"name": "LookupMetadata",
