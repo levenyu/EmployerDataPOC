@@ -22,7 +22,21 @@
 					"sink": {
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
-						"sqlWriterStoredProcedureName": "SomeSPROC"
+						"sqlWriterStoredProcedureName": "master.uspImportSedgwickClaimData",
+						"sqlWriterTableType": "master.udttSedgwickClaimData",
+						"storedProcedureParameters": {
+							"SourceXmlFileName": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.SourceFileName",
+									"type": "Expression"
+								}
+							},
+							"TestMode": {
+								"type": "Byte",
+								"value": "0"
+							}
+						}
 					},
 					"enableStaging": false,
 					"dataIntegrationUnits": 0,
@@ -36,14 +50,18 @@
 						"referenceName": "SedgwickEmployerDataSourceAsXML",
 						"type": "DatasetReference",
 						"parameters": {
-							"SourceFileName": "SedgwickClaimFile.xml",
-							"SourceFolderName": "employer/inputXML",
-							"Structure": [
-								{
-									"name": "Prop_0",
-									"type": "String"
-								}
-							]
+							"SourceFileName": {
+								"value": "@pipeline().parameters.SourceFileName",
+								"type": "Expression"
+							},
+							"SourceFolderName": {
+								"value": "@pipeline().parameters.SourceFolderName",
+								"type": "Expression"
+							},
+							"Structure": {
+								"value": "@pipeline().parameters.SourceDataStructure",
+								"type": "Expression"
+							}
 						}
 					}
 				],
@@ -52,44 +70,10 @@
 						"referenceName": "PolarisEtlASD",
 						"type": "DatasetReference",
 						"parameters": {
-							"Structure": [
-								{
-									"name": "EmployerName",
-									"type": "String"
-								},
-								{
-									"name": "EmployerFEIN",
-									"type": "String"
-								},
-								{
-									"name": "EmployerUniqueId",
-									"type": "String"
-								},
-								{
-									"name": "EmployerAddressLine1",
-									"type": "String"
-								},
-								{
-									"name": "EmployerAddressLine2",
-									"type": "String"
-								},
-								{
-									"name": "EmployerCity",
-									"type": "String"
-								},
-								{
-									"name": "EmployerState",
-									"type": "String"
-								},
-								{
-									"name": "EmployerZip",
-									"type": "String"
-								},
-								{
-									"name": "EmployerCountry",
-									"type": "String"
-								}
-							]
+							"Structure": {
+								"value": "@pipeline().parameters.SinkDataStructure",
+								"type": "Expression"
+							}
 						}
 					}
 				]
