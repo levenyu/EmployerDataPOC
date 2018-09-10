@@ -82,6 +82,7 @@
 						"referenceName": "ImportSedgwickEmployerDataAsJSON",
 						"type": "PipelineReference"
 					},
+					"waitOnCompletion": true,
 					"parameters": {
 						"SourceFileName": {
 							"value": "@pipeline().parameters.SourceFileName",
