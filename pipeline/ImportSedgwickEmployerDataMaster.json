@@ -20,7 +20,7 @@
 						"sqlReaderQuery": "select\n\td.DataFactoryLoadId,\n\td.Pipeline,\n\td.TargetDatabase,\n\td.TargetSink,\n\td.SortOrder,\n\td.SourceStructure,\n\td.TargetStructure,\n\td.ColumnMapping,\n\td.SourceStoredProcedure,\n\td.SourceStoredProcedureTableType\nfrom\n\tmetadata.DataFactoryLoad d\nwhere\n\t1 = 1\n\tand d.Pipeline = 'ImportSedgwickEmployerDataAsJSON'\norder by\n\td.DataFactoryLoadId desc"
 					},
 					"dataset": {
-						"referenceName": "PolarisEtlASD",
+						"referenceName": "PolarisEtlASD_Employer",
 						"type": "DatasetReference",
 						"parameters": {
 							"Structure": [
