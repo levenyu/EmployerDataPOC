@@ -3,18 +3,6 @@
 	"properties": {
 		"description": "Event trigger to import Sedgwick employer data located within XML claim file dropped on the BLOB storage.",
 		"runtimeState": "Stopped",
-		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "ImportSedgwickEmployerDataAsXML",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"SourceFileName": "@triggerBody().fileName",
-					"SourceFolderName": "@triggerBody().folderPath"
-				}
-			}
-		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/employer/blobs/inputXML/",
