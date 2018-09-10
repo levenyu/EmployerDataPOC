@@ -75,6 +75,16 @@
 					}
 				}
 			}
-		]
+		],
+		"parameters": {
+			"SourceFileName": {
+				"type": "String",
+				"defaultValue": "SedgwickClaimListExample.json"
+			},
+			"SourceFolderName": {
+				"type": "String",
+				"defaultValue": "employer/inputJSON"
+			}
+		}
 	}
 }
