@@ -74,6 +74,19 @@
 						}
 					}
 				}
+			},
+			{
+				"name": "ExecuteImportSedgwickEmployerDataAsJSONPipeline",
+				"description": "Execute ImportSedgwickEmployerDataAsJSON Pipeline",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "LookupMetadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				]
 			}
 		],
 		"parameters": {
