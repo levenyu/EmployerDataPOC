@@ -101,12 +101,30 @@
 							"value": "@pipeline().parameters.SourceFolderName",
 							"type": "Expression"
 						},
-						"SourceDataStructure": "[{\"name\":\"name\",\"type\":\"String\",\"description\":\"Employer Name\"},{\"name\":\"FEIN\",\"type\":\"String\",\"description\":\"Employer FEIN\"},{\"name\":\"uniqueId\",\"type\":\"String\",\"description\":\"Employer Unique ID\"},{\"name\":\"line1\",\"type\":\"String\",\"description\":\"Address line 1\"},{\"name\":\"line2\",\"type\":\"String\",\"description\":\"Address line 2\"},{\"name\":\"city\",\"type\":\"String\",\"description\":\"City\"},{\"name\":\"state\",\"type\":\"String\",\"description\":\"State\"},{\"name\":\"zip\",\"type\":\"String\",\"description\":\"Zip\"},{\"name\":\"country\",\"type\":\"String\",\"description\":\"Country\"}]",
-						"SinkDataStructure": "[{\"name\":\"EmployerName\",\"type\":\"String\",\"description\":\"Employer Name\"},{\"name\":\"EmployerFEIN\",\"type\":\"String\",\"description\":\"Employer FEIN\"},{\"name\":\"EmployerUniqueId\",\"type\":\"String\",\"description\":\"Employer Unique ID\"},{\"name\":\"EmployerAddressLine1\",\"type\":\"String\",\"description\":\"Address line 1\"},{\"name\":\"EmployerAddressLine2\",\"type\":\"String\",\"description\":\"Address line 2\"},{\"name\":\"EmployerCity\",\"type\":\"String\",\"description\":\"City\"},{\"name\":\"EmployerState\",\"type\":\"String\",\"description\":\"State\"},{\"name\":\"EmployerZip\",\"type\":\"String\",\"description\":\"Zip\"},{\"name\":\"EmployerCountry\",\"type\":\"String\",\"description\":\"Country\"}]",
-						"DataMappingStructure": "{\"type\":\"TabularTranslator\",\"columnMappings\":{\"name\":\"EmployerName\",\"FEIN\":\"EmployerFEIN\",\"uniqueId\":\"EmployerUniqueId\",\"line1\":\"EmployerAddressLine1\",\"line2\":\"EmployerAddressLine2\",\"city\":\"EmployerCity\",\"state\":\"EmployerState\",\"zip\":\"EmployerZip\",\"country\":\"EmployerCountry\"}}",
-						"TargetTableName": "ImportDataTable",
-						"SinkProcedureName": "master.uspImportSedgwickEmployerData",
-						"SinkUserDefinedTableType": "master.udttSedgwickEmployerData"
+						"SourceDataStructure": {
+							"value": "@activity('LookupMetadata').output.firstRow.SourceStructure",
+							"type": "Expression"
+						},
+						"SinkDataStructure": {
+							"value": "@activity('LookupMetadata').output.firstRow.TargetStructure",
+							"type": "Expression"
+						},
+						"DataMappingStructure": {
+							"value": "@activity('LookupMetadata').output.firstRow.ColumnMapping",
+							"type": "Expression"
+						},
+						"TargetTableName": {
+							"value": "@activity('LookupMetadata').output.firstRow.TargetSink",
+							"type": "Expression"
+						},
+						"SinkProcedureName": {
+							"value": "@activity('LookupMetadata').output.firstRow.SourceStoredProcedure",
+							"type": "Expression"
+						},
+						"SinkUserDefinedTableType": {
+							"value": "@activity('LookupMetadata').output.firstRow.SourceStoredProcedureTableType",
+							"type": "Expression"
+						}
 					}
 				}
 			}
