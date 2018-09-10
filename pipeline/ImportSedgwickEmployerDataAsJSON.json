@@ -105,7 +105,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlSource",
-						"sqlReaderQuery": "SELECT datafactoryloadid, \n       pipeline, \n       tabletype, \n\t   sourcedatabase,\n       sourcetable, \n\t   targetdatabase,\n       targetsink, \n       sortorder, \n       Isnull(directsourcequery, sourcequery) AS SourceQuery, \n       SourceStructure, \n       SourceStoredProcedure, \n       SourceStoredProcedureTableType, \n       TargetStructure, \n       targetprepsinkscript, \n       ColumnMapping, \n       isactive, \n       ispurge, \n       isincremental \nFROM   metadata.datafactoryload d \nWHERE  1=1 \n\t   and Pipeline = 'ImportSedgwickEmployerDataAsJSON'\norder by datafactoryloadid desc"
+						"sqlReaderQuery": "select\n\td.DataFactoryLoadId,\n\td.Pipeline,\n\td.TargetDatabase,\n\td.TargetSink,\n\td.SortOrder,\n\td.SourceStructure,\n\td.TargetStructure,\n\td.ColumnMapping,\n\td.SourceStoredProcedure,\n\td.SourceStoredProcedureTableType\nfrom\n\tmetadata.DataFactoryLoad d\nwhere\n\t1 = 1\n\tand d.Pipeline = 'ImportSedgwickEmployerDataAsJSON'\norder by\n\td.DataFactoryLoadId desc"
 					},
 					"dataset": {
 						"referenceName": "PolarisEtlASD",
@@ -292,7 +292,7 @@
 			},
 			"TargetTableName": {
 				"type": "String",
-				"defaultValue": "master.Employer"
+				"defaultValue": "ImportDataTable"
 			},
 			"SinkProcedureName": {
 				"type": "String",
