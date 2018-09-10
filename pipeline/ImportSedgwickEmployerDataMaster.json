@@ -1,7 +1,7 @@
 {
-	"name": "ImportEmployerDataMaster",
+	"name": "ImportSedgwickEmployerDataMaster",
 	"properties": {
-		"description": "Import Employer Data Master pipeline",
+		"description": "This is \"Import Sedgwick Employer Data Master\" pipeline.",
 		"activities": [
 			{
 				"name": "LookupMetadata",
@@ -76,7 +76,7 @@
 				}
 			},
 			{
-				"name": "ExecuteChildPipeline",
+				"name": "ExecuteChildSedgwickPipeline",
 				"description": "Execute ImportSedgwickEmployerDataAsJSON Pipeline",
 				"type": "ExecutePipeline",
 				"dependsOn": [
