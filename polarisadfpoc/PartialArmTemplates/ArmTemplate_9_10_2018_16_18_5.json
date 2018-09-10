@@ -1,0 +1,439 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "polarisadfpoc"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportSedgwickEmployerDataAsJSON')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Import Sedgwick Employer Data from XML data source file; convert it to JSON file in the Azure BLOB storage then import it to the PolarisEtl ASD.",
+				"activities": [
+					{
+						"name": "CopyJSONToASD",
+						"description": "Copy JSON To ASD",
+						"type": "Copy",
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"typeProperties": {
+							"source": {
+								"type": "BlobSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "SqlSink",
+								"writeBatchSize": 10000,
+								"sqlWriterStoredProcedureName": {
+									"value": "@pipeline().parameters.SinkProcedureName",
+									"type": "Expression"
+								},
+								"sqlWriterTableType": {
+									"value": "@pipeline().parameters.SinkUserDefinedTableType",
+									"type": "Expression"
+								},
+								"storedProcedureParameters": {
+									"SourceFileName": {
+										"type": "String",
+										"value": {
+											"value": "@pipeline().parameters.SourceFileName",
+											"type": "Expression"
+										}
+									}
+								}
+							},
+							"enableStaging": false,
+							"dataIntegrationUnits": 0,
+							"translator": {
+								"value": "@pipeline().parameters.DataMappingStructure",
+								"type": "Expression"
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "SedgwickEmployerDataSourceAsJSON",
+								"type": "DatasetReference",
+								"parameters": {
+									"SourceFileName": {
+										"value": "@pipeline().parameters.SourceFileName",
+										"type": "Expression"
+									},
+									"SourceFolderName": {
+										"value": "@pipeline().parameters.SourceFolderName",
+										"type": "Expression"
+									},
+									"Structure": {
+										"value": "@pipeline().parameters.SourceDataStructure",
+										"type": "Expression"
+									}
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "PolarisEtlASD_Employer",
+								"type": "DatasetReference",
+								"parameters": {
+									"Structure": {
+										"value": "@pipeline().parameters.SinkDataStructure",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					}
+				],
+				"parameters": {
+					"SourceFileName": {
+						"type": "String",
+						"defaultValue": "SedgwickClaimListExample.json"
+					},
+					"SourceFolderName": {
+						"type": "String",
+						"defaultValue": "employer/inputJSON"
+					},
+					"SourceDataStructure": {
+						"type": "Object",
+						"defaultValue": [
+							{
+								"name": "name",
+								"type": "String",
+								"description": "Employer Name"
+							},
+							{
+								"name": "FEIN",
+								"type": "String",
+								"description": "Employer FEIN"
+							},
+							{
+								"name": "uniqueId",
+								"type": "String",
+								"description": "Employer Unique ID"
+							},
+							{
+								"name": "line1",
+								"type": "String",
+								"description": "Address line 1"
+							},
+							{
+								"name": "line2",
+								"type": "String",
+								"description": "Address line 2"
+							},
+							{
+								"name": "city",
+								"type": "String",
+								"description": "City"
+							},
+							{
+								"name": "state",
+								"type": "String",
+								"description": "State"
+							},
+							{
+								"name": "zip",
+								"type": "String",
+								"description": "Zip"
+							},
+							{
+								"name": "country",
+								"type": "String",
+								"description": "Country"
+							}
+						]
+					},
+					"SinkDataStructure": {
+						"type": "Object",
+						"defaultValue": [
+							{
+								"name": "EmployerName",
+								"type": "String",
+								"description": "Employer Name"
+							},
+							{
+								"name": "EmployerFEIN",
+								"type": "String",
+								"description": "Employer FEIN"
+							},
+							{
+								"name": "EmployerUniqueId",
+								"type": "String",
+								"description": "Employer Unique ID"
+							},
+							{
+								"name": "EmployerAddressLine1",
+								"type": "String",
+								"description": "Address line 1"
+							},
+							{
+								"name": "EmployerAddressLine2",
+								"type": "String",
+								"description": "Address line 2"
+							},
+							{
+								"name": "EmployerCity",
+								"type": "String",
+								"description": "City"
+							},
+							{
+								"name": "EmployerState",
+								"type": "String",
+								"description": "State"
+							},
+							{
+								"name": "EmployerZip",
+								"type": "String",
+								"description": "Zip"
+							},
+							{
+								"name": "EmployerCountry",
+								"type": "String",
+								"description": "Country"
+							}
+						]
+					},
+					"DataMappingStructure": {
+						"type": "Object",
+						"defaultValue": {
+							"type": "TabularTranslator",
+							"columnMappings": {
+								"name": "EmployerName",
+								"FEIN": "EmployerFEIN",
+								"uniqueId": "EmployerUniqueId",
+								"line1": "EmployerAddressLine1",
+								"line2": "EmployerAddressLine2",
+								"city": "EmployerCity",
+								"state": "EmployerState",
+								"zip": "EmployerZip",
+								"country": "EmployerCountry"
+							}
+						}
+					},
+					"SinkProcedureName": {
+						"type": "String",
+						"defaultValue": "master.uspImportSedgwickEmployerData"
+					},
+					"SinkUserDefinedTableType": {
+						"type": "String",
+						"defaultValue": "master.udttSedgwickEmployerData"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/PolarisEtlASD_Employer')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ImportSedgwickEmployerDataMaster')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "This is \"Import Sedgwick Employer Data\" master pipeline.",
+				"activities": [
+					{
+						"name": "LookupMetadata",
+						"description": "Lookup metadata from the metadata.DataFactoryLoad table",
+						"type": "Lookup",
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"typeProperties": {
+							"source": {
+								"type": "SqlSource",
+								"sqlReaderQuery": "select\n\td.DataFactoryLoadId,\n\td.Pipeline,\n\td.TargetDatabase,\n\td.TargetSink,\n\td.SortOrder,\n\td.SourceStructure,\n\td.TargetStructure,\n\td.ColumnMapping,\n\td.SourceStoredProcedure,\n\td.SourceStoredProcedureTableType\nfrom\n\tmetadata.DataFactoryLoad d\nwhere\n\t1 = 1\n\tand d.Pipeline = 'ImportSedgwickEmployerDataAsJSON'\norder by\n\td.DataFactoryLoadId desc"
+							},
+							"dataset": {
+								"referenceName": "PolarisEtlASD_Employer",
+								"type": "DatasetReference",
+								"parameters": {
+									"Structure": [
+										{
+											"name": "EmployerName",
+											"type": "String"
+										},
+										{
+											"name": "EmployerFEIN",
+											"type": "String"
+										},
+										{
+											"name": "EmployerUniqueId",
+											"type": "String"
+										},
+										{
+											"name": "EmployerAddressLine1",
+											"type": "String"
+										},
+										{
+											"name": "EmployerAddressLine2",
+											"type": "String"
+										},
+										{
+											"name": "EmployerCity",
+											"type": "String"
+										},
+										{
+											"name": "EmployerState",
+											"type": "String"
+										},
+										{
+											"name": "EmployerZip",
+											"type": "String"
+										},
+										{
+											"name": "EmployerCountry",
+											"type": "String"
+										}
+									]
+								}
+							}
+						}
+					},
+					{
+						"name": "ExecuteChildSedgwickPipeline",
+						"description": "Execute ImportSedgwickEmployerDataAsJSON Pipeline",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "LookupMetadata",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "ImportSedgwickEmployerDataAsJSON",
+								"type": "PipelineReference"
+							},
+							"parameters": {
+								"SourceFileName": {
+									"value": "@pipeline().parameters.SourceFileName",
+									"type": "Expression"
+								},
+								"SourceFolderName": {
+									"value": "@pipeline().parameters.SourceFolderName",
+									"type": "Expression"
+								},
+								"SourceDataStructure": {
+									"value": "@activity('LookupMetadata').output.firstRow.SourceStructure",
+									"type": "Expression"
+								},
+								"SinkDataStructure": {
+									"value": "@activity('LookupMetadata').output.firstRow.TargetStructure",
+									"type": "Expression"
+								},
+								"DataMappingStructure": {
+									"value": "@activity('LookupMetadata').output.firstRow.ColumnMapping",
+									"type": "Expression"
+								},
+								"SinkProcedureName": {
+									"value": "@activity('LookupMetadata').output.firstRow.SourceStoredProcedure",
+									"type": "Expression"
+								},
+								"SinkUserDefinedTableType": {
+									"value": "@activity('LookupMetadata').output.firstRow.SourceStoredProcedureTableType",
+									"type": "Expression"
+								}
+							}
+						}
+					}
+				],
+				"parameters": {
+					"SourceFileName": {
+						"type": "String",
+						"defaultValue": "SedgwickClaimListExample.json"
+					},
+					"SourceFolderName": {
+						"type": "String",
+						"defaultValue": "employer/inputJSON"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/PolarisEtlASD_Employer')]",
+				"[concat(variables('factoryId'), '/pipelines/ImportSedgwickEmployerDataAsJSON')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PolarisEtlASD_Employer')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "PolarisEtl ASD Employer data table",
+				"linkedServiceName": {
+					"referenceName": "PolarisEtlASD",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Structure": {
+						"type": "Object",
+						"defaultValue": [
+							{
+								"name": "EmployerName",
+								"type": "String"
+							},
+							{
+								"name": "EmployerFEIN",
+								"type": "String"
+							},
+							{
+								"name": "EmployerUniqueId",
+								"type": "String"
+							},
+							{
+								"name": "EmployerAddressLine1",
+								"type": "String"
+							},
+							{
+								"name": "EmployerAddressLine2",
+								"type": "String"
+							},
+							{
+								"name": "EmployerCity",
+								"type": "String"
+							},
+							{
+								"name": "EmployerState",
+								"type": "String"
+							},
+							{
+								"name": "EmployerZip",
+								"type": "String"
+							},
+							{
+								"name": "EmployerCountry",
+								"type": "String"
+							}
+						]
+					}
+				},
+				"type": "AzureSqlTable",
+				"structure": {
+					"value": "@dataset().Structure",
+					"type": "Expression"
+				},
+				"typeProperties": {
+					"tableName": "ImportDataTable"
+				}
+			}
+		}
+	]
+}

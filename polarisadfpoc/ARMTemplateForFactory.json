@@ -39,14 +39,6 @@
 			"type": "string",
 			"defaultValue": "@dataset().SourceFolderName"
 		},
-		"SedgwickEmployerDataSourceAsXML_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "@dataset().SourceFileName"
-		},
-		"SedgwickEmployerDataSourceAsXML_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": "@dataset().SourceFolderName"
-		},
 		"ET-SedgwickEmployerDataImport_properties_ImportSedgwickEmployerDataAsJSON_parameters_SourceFileName": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
@@ -200,7 +192,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "PolarisEtlASD",
+								"referenceName": "PolarisEtlASD_Employer",
 								"type": "DatasetReference",
 								"parameters": {
 									"Structure": {
@@ -351,7 +343,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SedgwickEmployerDataSourceAsJSON')]",
-				"[concat(variables('factoryId'), '/datasets/PolarisEtlASD')]"
+				"[concat(variables('factoryId'), '/datasets/PolarisEtlASD_Employer')]"
 			]
 		},
 		{
@@ -380,7 +372,7 @@
 								"sqlReaderQuery": "select\n\td.DataFactoryLoadId,\n\td.Pipeline,\n\td.TargetDatabase,\n\td.TargetSink,\n\td.SortOrder,\n\td.SourceStructure,\n\td.TargetStructure,\n\td.ColumnMapping,\n\td.SourceStoredProcedure,\n\td.SourceStoredProcedureTableType\nfrom\n\tmetadata.DataFactoryLoad d\nwhere\n\t1 = 1\n\tand d.Pipeline = 'ImportSedgwickEmployerDataAsJSON'\norder by\n\td.DataFactoryLoadId desc"
 							},
 							"dataset": {
-								"referenceName": "PolarisEtlASD",
+								"referenceName": "PolarisEtlASD_Employer",
 								"type": "DatasetReference",
 								"parameters": {
 									"Structure": [
@@ -489,7 +481,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/PolarisEtlASD')]",
+				"[concat(variables('factoryId'), '/datasets/PolarisEtlASD_Employer')]",
 				"[concat(variables('factoryId'), '/pipelines/ImportSedgwickEmployerDataAsJSON')]"
 			]
 		},
@@ -523,11 +515,11 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/PolarisEtlASD')]",
+			"name": "[concat(parameters('factoryName'), '/PolarisEtlASD_Employer')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "PolarisEtl ASD",
+				"description": "PolarisEtl ASD Employer data table",
 				"linkedServiceName": {
 					"referenceName": "PolarisEtlASD",
 					"type": "LinkedServiceReference"
@@ -688,67 +680,6 @@
 					},
 					"folderPath": {
 						"value": "[parameters('SedgwickEmployerDataSourceAsJSON_properties_typeProperties_folderPath')]",
-						"type": "Expression"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/EmployerDataSource')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SedgwickEmployerDataSourceAsXML')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "Sedgwick employer data source as XML file in the employer BLOB container",
-				"linkedServiceName": {
-					"referenceName": "EmployerDataSource",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"SourceFileName": {
-						"type": "String",
-						"defaultValue": "SedgwickClaimFile.xml"
-					},
-					"SourceFolderName": {
-						"type": "String",
-						"defaultValue": "employer/inputXML"
-					},
-					"Structure": {
-						"type": "Object",
-						"defaultValue": [
-							{
-								"name": "Prop_0",
-								"type": "String"
-							}
-						]
-					}
-				},
-				"annotations": [],
-				"type": "AzureBlob",
-				"structure": {
-					"value": "@dataset().Structure",
-					"type": "Expression"
-				},
-				"typeProperties": {
-					"format": {
-						"type": "TextFormat",
-						"columnDelimiter": "\u0001",
-						"rowDelimiter": "",
-						"quoteChar": "\"",
-						"nullValue": "\\N",
-						"encodingName": null,
-						"treatEmptyAsNull": true,
-						"skipLineCount": 0,
-						"firstRowAsHeader": false
-					},
-					"fileName": {
-						"value": "[parameters('SedgwickEmployerDataSourceAsXML_properties_typeProperties_fileName')]",
-						"type": "Expression"
-					},
-					"folderPath": {
-						"value": "[parameters('SedgwickEmployerDataSourceAsXML_properties_typeProperties_folderPath')]",
 						"type": "Expression"
 					}
 				}

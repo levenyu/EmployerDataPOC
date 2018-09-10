@@ -29,12 +29,6 @@
 		"SedgwickEmployerDataSourceAsJSON_properties_typeProperties_folderPath": {
 			"value": "@dataset().SourceFolderName"
 		},
-		"SedgwickEmployerDataSourceAsXML_properties_typeProperties_fileName": {
-			"value": "@dataset().SourceFileName"
-		},
-		"SedgwickEmployerDataSourceAsXML_properties_typeProperties_folderPath": {
-			"value": "@dataset().SourceFolderName"
-		},
 		"ET-SedgwickEmployerDataImport_properties_ImportSedgwickEmployerDataAsJSON_parameters_SourceFileName": {
 			"value": "@triggerBody().fileName"
 		},
