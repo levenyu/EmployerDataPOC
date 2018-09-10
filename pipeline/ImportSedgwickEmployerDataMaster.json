@@ -113,10 +113,6 @@
 							"value": "@activity('LookupMetadata').output.firstRow.ColumnMapping",
 							"type": "Expression"
 						},
-						"TargetTableName": {
-							"value": "@activity('LookupMetadata').output.firstRow.TargetSink",
-							"type": "Expression"
-						},
 						"SinkProcedureName": {
 							"value": "@activity('LookupMetadata').output.firstRow.SourceStoredProcedure",
 							"type": "Expression"
