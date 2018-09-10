@@ -44,12 +44,6 @@
 		"ET-SedgwickEmployerDataImport_properties_typeProperties_scope": {
 			"value": "/subscriptions/0fbf2902-88ee-416e-a94a-40846db5f2f8/resourceGroups/DWPOC/providers/Microsoft.Storage/storageAccounts/polarisstoragepoc"
 		},
-		"ET-SedgwickEmployerDataImportForXmlFile_properties_ImportSedgwickEmployerDataAsXML_parameters_SourceFileName": {
-			"value": "@triggerBody().fileName"
-		},
-		"ET-SedgwickEmployerDataImportForXmlFile_properties_ImportSedgwickEmployerDataAsXML_parameters_SourceFolderName": {
-			"value": "@triggerBody().folderPath"
-		},
 		"ET-SedgwickEmployerDataImportForXmlFile_properties_typeProperties_scope": {
 			"value": "/subscriptions/0fbf2902-88ee-416e-a94a-40846db5f2f8/resourceGroups/DWPOC/providers/Microsoft.Storage/storageAccounts/polarisstoragepoc"
 		}

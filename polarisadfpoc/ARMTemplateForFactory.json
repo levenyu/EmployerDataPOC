@@ -59,14 +59,6 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/0fbf2902-88ee-416e-a94a-40846db5f2f8/resourceGroups/DWPOC/providers/Microsoft.Storage/storageAccounts/polarisstoragepoc"
 		},
-		"ET-SedgwickEmployerDataImportForXmlFile_properties_ImportSedgwickEmployerDataAsXML_parameters_SourceFileName": {
-			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
-		},
-		"ET-SedgwickEmployerDataImportForXmlFile_properties_ImportSedgwickEmployerDataAsXML_parameters_SourceFolderName": {
-			"type": "string",
-			"defaultValue": "@triggerBody().folderPath"
-		},
 		"ET-SedgwickEmployerDataImportForXmlFile_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/0fbf2902-88ee-416e-a94a-40846db5f2f8/resourceGroups/DWPOC/providers/Microsoft.Storage/storageAccounts/polarisstoragepoc"
@@ -214,10 +206,6 @@
 									"Structure": {
 										"value": "@pipeline().parameters.SinkDataStructure",
 										"type": "Expression"
-									},
-									"TargetTableName": {
-										"value": "@pipeline().parameters.TargetTableName",
-										"type": "Expression"
 									}
 								}
 							}
@@ -350,10 +338,6 @@
 							}
 						}
 					},
-					"TargetTableName": {
-						"type": "String",
-						"defaultValue": "ImportDataTable"
-					},
 					"SinkProcedureName": {
 						"type": "String",
 						"defaultValue": "master.uspImportSedgwickEmployerData"
@@ -367,136 +351,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SedgwickEmployerDataSourceAsJSON')]",
-				"[concat(variables('factoryId'), '/datasets/PolarisEtlASD')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ImportSedgwickEmployerDataAsXML')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "Import Sedgwick Employer Data from XML data source file in the Azure BLOB storage to the PolarisEtl ASD.",
-				"activities": [
-					{
-						"name": "CopyXmlToASD",
-						"description": "Copy Xml To ASD",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "BlobSource",
-								"recursive": true
-							},
-							"sink": {
-								"type": "SqlSink",
-								"writeBatchSize": 10000,
-								"sqlWriterStoredProcedureName": "master.uspImportSedgwickClaimData",
-								"sqlWriterTableType": "master.udttSedgwickClaimData",
-								"storedProcedureParameters": {
-									"SourceXmlFileName": {
-										"type": "String",
-										"value": {
-											"value": "@pipeline().parameters.SourceFileName",
-											"type": "Expression"
-										}
-									},
-									"TestMode": {
-										"type": "Byte",
-										"value": "0"
-									}
-								}
-							},
-							"enableStaging": false,
-							"dataIntegrationUnits": 0,
-							"translator": {
-								"value": "@pipeline().parameters.DataMappingStructure",
-								"type": "Expression"
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "SedgwickEmployerDataSourceAsXML",
-								"type": "DatasetReference",
-								"parameters": {
-									"SourceFileName": {
-										"value": "@pipeline().parameters.SourceFileName",
-										"type": "Expression"
-									},
-									"SourceFolderName": {
-										"value": "@pipeline().parameters.SourceFolderName",
-										"type": "Expression"
-									},
-									"Structure": {
-										"value": "@pipeline().parameters.SourceDataStructure",
-										"type": "Expression"
-									}
-								}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "PolarisEtlASD",
-								"type": "DatasetReference",
-								"parameters": {
-									"Structure": {
-										"value": "@pipeline().parameters.SinkDataStructure",
-										"type": "Expression"
-									},
-									"TargetTableName": "ImportDataTable"
-								}
-							}
-						]
-					}
-				],
-				"parameters": {
-					"SourceFileName": {
-						"type": "String",
-						"defaultValue": "SedgwickClaimFile.xml"
-					},
-					"SourceFolderName": {
-						"type": "String",
-						"defaultValue": "employer/inputXML"
-					},
-					"SourceDataStructure": {
-						"type": "Object",
-						"defaultValue": [
-							{
-								"name": "Prop_0",
-								"type": "String"
-							}
-						]
-					},
-					"SinkDataStructure": {
-						"type": "Object",
-						"defaultValue": [
-							{
-								"name": "XMLData",
-								"type": "String"
-							}
-						]
-					},
-					"DataMappingStructure": {
-						"type": "Object",
-						"defaultValue": {
-							"type": "TabularTranslator",
-							"columnMappings": {
-								"Prop_0": "XMLData"
-							}
-						}
-					}
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SedgwickEmployerDataSourceAsXML')]",
 				"[concat(variables('factoryId'), '/datasets/PolarisEtlASD')]"
 			]
 		},
@@ -532,51 +386,41 @@
 									"Structure": [
 										{
 											"name": "EmployerName",
-											"type": "String",
-											"description": "Employer Name"
+											"type": "String"
 										},
 										{
 											"name": "EmployerFEIN",
-											"type": "String",
-											"description": "Employer FEIN"
+											"type": "String"
 										},
 										{
 											"name": "EmployerUniqueId",
-											"type": "String",
-											"description": "Employer Unique ID"
+											"type": "String"
 										},
 										{
 											"name": "EmployerAddressLine1",
-											"type": "String",
-											"description": "Address line 1"
+											"type": "String"
 										},
 										{
 											"name": "EmployerAddressLine2",
-											"type": "String",
-											"description": "Address line 2"
+											"type": "String"
 										},
 										{
 											"name": "EmployerCity",
-											"type": "String",
-											"description": "City"
+											"type": "String"
 										},
 										{
 											"name": "EmployerState",
-											"type": "String",
-											"description": "State"
+											"type": "String"
 										},
 										{
 											"name": "EmployerZip",
-											"type": "String",
-											"description": "Zip"
+											"type": "String"
 										},
 										{
 											"name": "EmployerCountry",
-											"type": "String",
-											"description": "Country"
+											"type": "String"
 										}
-									],
-									"TargetTableName": "master.Employer"
+									]
 								}
 							}
 						}
@@ -618,10 +462,6 @@
 								},
 								"DataMappingStructure": {
 									"value": "@activity('LookupMetadata').output.firstRow.ColumnMapping",
-									"type": "Expression"
-								},
-								"TargetTableName": {
-									"value": "@activity('LookupMetadata').output.firstRow.TargetSink",
 									"type": "Expression"
 								},
 								"SinkProcedureName": {
@@ -698,54 +538,41 @@
 						"defaultValue": [
 							{
 								"name": "EmployerName",
-								"type": "String",
-								"description": "Employer Name"
+								"type": "String"
 							},
 							{
 								"name": "EmployerFEIN",
-								"type": "String",
-								"description": "Employer FEIN"
+								"type": "String"
 							},
 							{
 								"name": "EmployerUniqueId",
-								"type": "String",
-								"description": "Employer Unique ID"
+								"type": "String"
 							},
 							{
 								"name": "EmployerAddressLine1",
-								"type": "String",
-								"description": "Address line 1"
+								"type": "String"
 							},
 							{
 								"name": "EmployerAddressLine2",
-								"type": "String",
-								"description": "Address line 2"
+								"type": "String"
 							},
 							{
 								"name": "EmployerCity",
-								"type": "String",
-								"description": "City"
+								"type": "String"
 							},
 							{
 								"name": "EmployerState",
-								"type": "String",
-								"description": "State"
+								"type": "String"
 							},
 							{
 								"name": "EmployerZip",
-								"type": "String",
-								"description": "Zip"
+								"type": "String"
 							},
 							{
 								"name": "EmployerCountry",
-								"type": "String",
-								"description": "Country"
+								"type": "String"
 							}
 						]
-					},
-					"TargetTableName": {
-						"type": "String",
-						"defaultValue": "ImportDataTable"
 					}
 				},
 				"annotations": [],
@@ -755,10 +582,7 @@
 					"type": "Expression"
 				},
 				"typeProperties": {
-					"tableName": {
-						"value": "@dataset().TargetTableName",
-						"type": "Expression"
-					}
+					"tableName": "ImportDataTable"
 				}
 			},
 			"dependsOn": [
@@ -1052,18 +876,7 @@
 				"description": "Event trigger to import Sedgwick employer data located within XML claim file dropped on the BLOB storage.",
 				"annotations": [],
 				"runtimeState": "Stopped",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "ImportSedgwickEmployerDataAsXML",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"SourceFileName": "[parameters('ET-SedgwickEmployerDataImportForXmlFile_properties_ImportSedgwickEmployerDataAsXML_parameters_SourceFileName')]",
-							"SourceFolderName": "[parameters('ET-SedgwickEmployerDataImportForXmlFile_properties_ImportSedgwickEmployerDataAsXML_parameters_SourceFolderName')]"
-						}
-					}
-				],
+				"pipelines": [],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/employer/blobs/inputXML/",
@@ -1074,9 +887,7 @@
 					]
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/ImportSedgwickEmployerDataAsXML')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/occmonpremintegrationruntime')]",
