@@ -26,51 +26,41 @@
 							"Structure": [
 								{
 									"name": "EmployerName",
-									"type": "String",
-									"description": "Employer Name"
+									"type": "String"
 								},
 								{
 									"name": "EmployerFEIN",
-									"type": "String",
-									"description": "Employer FEIN"
+									"type": "String"
 								},
 								{
 									"name": "EmployerUniqueId",
-									"type": "String",
-									"description": "Employer Unique ID"
+									"type": "String"
 								},
 								{
 									"name": "EmployerAddressLine1",
-									"type": "String",
-									"description": "Address line 1"
+									"type": "String"
 								},
 								{
 									"name": "EmployerAddressLine2",
-									"type": "String",
-									"description": "Address line 2"
+									"type": "String"
 								},
 								{
 									"name": "EmployerCity",
-									"type": "String",
-									"description": "City"
+									"type": "String"
 								},
 								{
 									"name": "EmployerState",
-									"type": "String",
-									"description": "State"
+									"type": "String"
 								},
 								{
 									"name": "EmployerZip",
-									"type": "String",
-									"description": "Zip"
+									"type": "String"
 								},
 								{
 									"name": "EmployerCountry",
-									"type": "String",
-									"description": "Country"
+									"type": "String"
 								}
-							],
-							"TargetTableName": "master.Employer"
+							]
 						}
 					}
 				}
