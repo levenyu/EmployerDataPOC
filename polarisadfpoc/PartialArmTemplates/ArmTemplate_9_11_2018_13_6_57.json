@@ -1,0 +1,161 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "polarisadfpoc"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Pl_ImportSedgwickEmployerDataMaster')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "This is \"Import Sedgwick Employer Data\" master pipeline.",
+				"activities": [
+					{
+						"name": "Pl_Lk_LookupMetadata",
+						"description": "Lookup metadata from the metadata.DataFactoryLoad table",
+						"type": "Lookup",
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"typeProperties": {
+							"source": {
+								"type": "SqlSource",
+								"sqlReaderStoredProcedureName": "master.uspDataFactoryLoadSelectPipelineByName",
+								"storedProcedureParameters": {
+									"Pipeline": {
+										"type": "String",
+										"value": {
+											"value": "@pipeline().parameters.ChildPipeLineName",
+											"type": "Expression"
+										}
+									}
+								}
+							},
+							"dataset": {
+								"referenceName": "Ds_PolarisEtlASD_Employer",
+								"type": "DatasetReference",
+								"parameters": {
+									"Structure": [
+										{
+											"name": "EmployerName",
+											"type": "String"
+										},
+										{
+											"name": "EmployerFEIN",
+											"type": "String"
+										},
+										{
+											"name": "EmployerUniqueId",
+											"type": "String"
+										},
+										{
+											"name": "EmployerAddressLine1",
+											"type": "String"
+										},
+										{
+											"name": "EmployerAddressLine2",
+											"type": "String"
+										},
+										{
+											"name": "EmployerCity",
+											"type": "String"
+										},
+										{
+											"name": "EmployerState",
+											"type": "String"
+										},
+										{
+											"name": "EmployerZip",
+											"type": "String"
+										},
+										{
+											"name": "EmployerCountry",
+											"type": "String"
+										}
+									]
+								}
+							}
+						}
+					},
+					{
+						"name": "Pl_Epl_ExecuteChildSedgwickPipeline",
+						"description": "Execute ImportSedgwickEmployerDataAsJSON Pipeline",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Pl_Lk_LookupMetadata",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "Pl_ImportSedgwickEmployerDataAsJSON",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"SourceFileName": {
+									"value": "@pipeline().parameters.SourceFileName",
+									"type": "Expression"
+								},
+								"SourceFolderName": {
+									"value": "@pipeline().parameters.SourceFolderName",
+									"type": "Expression"
+								},
+								"SourceDataStructure": {
+									"value": "@json(activity('Pl_Lk_LookupMetadata').output.firstRow.SourceStructure)",
+									"type": "Expression"
+								},
+								"SinkDataStructure": {
+									"value": "@json(activity('Pl_Lk_LookupMetadata').output.firstRow.TargetStructure)",
+									"type": "Expression"
+								},
+								"DataMappingStructure": {
+									"value": "@json(activity('Pl_Lk_LookupMetadata').output.firstRow.ColumnMapping)",
+									"type": "Expression"
+								},
+								"SinkProcedureName": {
+									"value": "@activity('Pl_Lk_LookupMetadata').output.firstRow.SourceStoredProcedure",
+									"type": "Expression"
+								},
+								"SinkUserDefinedTableType": {
+									"value": "@activity('Pl_Lk_LookupMetadata').output.firstRow.SourceStoredProcedureTableType",
+									"type": "Expression"
+								}
+							}
+						}
+					}
+				],
+				"parameters": {
+					"SourceFileName": {
+						"type": "String",
+						"defaultValue": "SedgwickClaimListExample.json"
+					},
+					"SourceFolderName": {
+						"type": "String",
+						"defaultValue": "employer/inputJSON"
+					},
+					"ChildPipeLineName": {
+						"type": "String",
+						"defaultValue": "Pl_ImportSedgwickEmployerDataAsJSON"
+					}
+				}
+			}
+		}
+	]
+}
