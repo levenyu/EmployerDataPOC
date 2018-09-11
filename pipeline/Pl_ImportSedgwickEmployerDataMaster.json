@@ -17,11 +17,60 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlSource",
-						"sqlReaderQuery": "select\n\td.DataFactoryLoadId,\n\td.Pipeline,\n\td.TargetDatabase,\n\td.TargetSink,\n\td.SortOrder,\n\td.SourceStructure,\n\td.TargetStructure,\n\td.ColumnMapping,\n\td.SourceStoredProcedure,\n\td.SourceStoredProcedureTableType\nfrom\n\tmetadata.DataFactoryLoad d\nwhere\n\t1 = 1\n\tand d.Pipeline = 'Pl_ImportSedgwickEmployerDataAsJSON'\norder by\n\td.DataFactoryLoadId desc"
+						"sqlReaderStoredProcedureName": "master.uspDataFactoryLoadSelectPipelineByName",
+						"storedProcedureParameters": {
+							"Pipeline": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.ChildPipeLineName",
+									"type": "Expression"
+								}
+							}
+						}
 					},
 					"dataset": {
 						"referenceName": "Ds_PolarisEtlASD_Employer",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Structure": [
+								{
+									"name": "EmployerName",
+									"type": "String"
+								},
+								{
+									"name": "EmployerFEIN",
+									"type": "String"
+								},
+								{
+									"name": "EmployerUniqueId",
+									"type": "String"
+								},
+								{
+									"name": "EmployerAddressLine1",
+									"type": "String"
+								},
+								{
+									"name": "EmployerAddressLine2",
+									"type": "String"
+								},
+								{
+									"name": "EmployerCity",
+									"type": "String"
+								},
+								{
+									"name": "EmployerState",
+									"type": "String"
+								},
+								{
+									"name": "EmployerZip",
+									"type": "String"
+								},
+								{
+									"name": "EmployerCountry",
+									"type": "String"
+								}
+							]
+						}
 					}
 				}
 			},
@@ -84,6 +133,10 @@
 			"SourceFolderName": {
 				"type": "String",
 				"defaultValue": "employer/inputJSON"
+			},
+			"ChildPipeLineName": {
+				"type": "String",
+				"defaultValue": "Pl_ImportSedgwickEmployerDataAsJSON"
 			}
 		}
 	}
