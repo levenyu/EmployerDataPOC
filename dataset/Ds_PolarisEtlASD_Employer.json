@@ -1,9 +1,9 @@
 {
-	"name": "PolarisEtlASD_Employer",
+	"name": "Ds_PolarisEtlASD_Employer",
 	"properties": {
 		"description": "PolarisEtl ASD Employer data table",
 		"linkedServiceName": {
-			"referenceName": "PolarisEtlASD",
+			"referenceName": "Ls_Sql_PolarisEtl",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
