@@ -21,47 +21,7 @@
 					},
 					"dataset": {
 						"referenceName": "Ds_PolarisEtlASD_Employer",
-						"type": "DatasetReference",
-						"parameters": {
-							"Structure": [
-								{
-									"name": "EmployerName",
-									"type": "String"
-								},
-								{
-									"name": "EmployerFEIN",
-									"type": "String"
-								},
-								{
-									"name": "EmployerUniqueId",
-									"type": "String"
-								},
-								{
-									"name": "EmployerAddressLine1",
-									"type": "String"
-								},
-								{
-									"name": "EmployerAddressLine2",
-									"type": "String"
-								},
-								{
-									"name": "EmployerCity",
-									"type": "String"
-								},
-								{
-									"name": "EmployerState",
-									"type": "String"
-								},
-								{
-									"name": "EmployerZip",
-									"type": "String"
-								},
-								{
-									"name": "EmployerCountry",
-									"type": "String"
-								}
-							]
-						}
+						"type": "DatasetReference"
 					}
 				}
 			},
@@ -93,23 +53,23 @@
 							"type": "Expression"
 						},
 						"SourceDataStructure": {
-							"value": "@activity('LookupMetadata').output.firstRow.SourceStructure",
+							"value": "@activity('Pl_Lk_LookupMetadata').output.firstRow.SourceStructure",
 							"type": "Expression"
 						},
 						"SinkDataStructure": {
-							"value": "@activity('LookupMetadata').output.firstRow.TargetStructure",
+							"value": "@activity('Pl_Lk_LookupMetadata').output.firstRow.TargetStructure",
 							"type": "Expression"
 						},
 						"DataMappingStructure": {
-							"value": "@activity('LookupMetadata').output.firstRow.ColumnMapping",
+							"value": "@activity('Pl_Lk_LookupMetadata').output.firstRow.ColumnMapping",
 							"type": "Expression"
 						},
 						"SinkProcedureName": {
-							"value": "@activity('LookupMetadata').output.firstRow.SourceStoredProcedure",
+							"value": "@activity('Pl_Lk_LookupMetadata').output.firstRow.SourceStoredProcedure",
 							"type": "Expression"
 						},
 						"SinkUserDefinedTableType": {
-							"value": "@activity('LookupMetadata').output.firstRow.SourceStoredProcedureTableType",
+							"value": "@activity('Pl_Lk_LookupMetadata').output.firstRow.SourceStoredProcedureTableType",
 							"type": "Expression"
 						}
 					}
