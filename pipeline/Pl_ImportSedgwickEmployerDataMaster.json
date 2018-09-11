@@ -102,15 +102,15 @@
 							"type": "Expression"
 						},
 						"SourceDataStructure": {
-							"value": "@activity('Pl_Lk_LookupMetadata').output.firstRow.SourceStructure",
+							"value": "@json(activity('Pl_Lk_LookupMetadata').output.firstRow.SourceStructure)",
 							"type": "Expression"
 						},
 						"SinkDataStructure": {
-							"value": "@activity('Pl_Lk_LookupMetadata').output.firstRow.TargetStructure",
+							"value": "@json(activity('Pl_Lk_LookupMetadata').output.firstRow.TargetStructure)",
 							"type": "Expression"
 						},
 						"DataMappingStructure": {
-							"value": "@activity('Pl_Lk_LookupMetadata').output.firstRow.ColumnMapping",
+							"value": "@json(activity('Pl_Lk_LookupMetadata').output.firstRow.ColumnMapping)",
 							"type": "Expression"
 						},
 						"SinkProcedureName": {
