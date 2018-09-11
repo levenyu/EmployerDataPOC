@@ -8,16 +8,10 @@
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
 		},
-		"EmployerDataSource_connectionString": {
-			"value": ""
-		},
 		"Ls_ABlob_EmployerDataSource_connectionString": {
 			"value": ""
 		},
 		"Ls_Sql_PolarisEtl_connectionString": {
-			"value": ""
-		},
-		"PolarisEtlASD_connectionString": {
 			"value": ""
 		},
 		"SqlServer1_connectionString": {
