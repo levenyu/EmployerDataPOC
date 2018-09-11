@@ -1,9 +1,9 @@
 {
-	"name": "SedgwickEmployerDataSourceAsJSON",
+	"name": "Ds_SedgwickEmployerDataSourceAsJSON",
 	"properties": {
 		"description": "Sedgwick employer data source as JSON file in the employer BLOB container in the inputJSON folder.",
 		"linkedServiceName": {
-			"referenceName": "EmployerDataSource",
+			"referenceName": "Ls_ABlob_EmployerDataSource",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
