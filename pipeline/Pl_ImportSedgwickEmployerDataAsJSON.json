@@ -209,11 +209,11 @@
 			},
 			"SinkProcedureName": {
 				"type": "String",
-				"defaultValue": "master.uspImportSedgwickEmployerData"
+				"defaultValue": "master.uspSedgwickEmployerMerge"
 			},
 			"SinkUserDefinedTableType": {
 				"type": "String",
-				"defaultValue": "master.udttSedgwickEmployerData"
+				"defaultValue": "master.udttSedgwickEmployer"
 			}
 		}
 	}
