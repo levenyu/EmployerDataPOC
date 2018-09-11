@@ -4,8 +4,8 @@
 		"description": "Import Sedgwick Employer Data from XML data source file; convert it to JSON file in the Azure BLOB storage then import it to the PolarisEtl ASD.",
 		"activities": [
 			{
-				"name": "CopyJSONToASD",
-				"description": "Copy JSON To ASD",
+				"name": "Pl_Cpy_CopyJSONToASD",
+				"description": "Copy JSON content To ASD",
 				"type": "Copy",
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -49,7 +49,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SedgwickEmployerDataSourceAsJSON",
+						"referenceName": "Ds_SedgwickEmployerDataSourceAsJSON",
 						"type": "DatasetReference",
 						"parameters": {
 							"SourceFileName": {
@@ -69,7 +69,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "PolarisEtlASD_Employer",
+						"referenceName": "Ds_PolarisEtlASD_Employer",
 						"type": "DatasetReference",
 						"parameters": {
 							"Structure": {
