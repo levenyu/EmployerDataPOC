@@ -1,10 +1,10 @@
 {
-	"name": "ImportSedgwickEmployerDataMaster",
+	"name": "Pl_ImportSedgwickEmployerDataMaster",
 	"properties": {
 		"description": "This is \"Import Sedgwick Employer Data\" master pipeline.",
 		"activities": [
 			{
-				"name": "LookupMetadata",
+				"name": "Pl_Lk_LookupMetadata",
 				"description": "Lookup metadata from the metadata.DataFactoryLoad table",
 				"type": "Lookup",
 				"policy": {
@@ -20,7 +20,7 @@
 						"sqlReaderQuery": "select\n\td.DataFactoryLoadId,\n\td.Pipeline,\n\td.TargetDatabase,\n\td.TargetSink,\n\td.SortOrder,\n\td.SourceStructure,\n\td.TargetStructure,\n\td.ColumnMapping,\n\td.SourceStoredProcedure,\n\td.SourceStoredProcedureTableType\nfrom\n\tmetadata.DataFactoryLoad d\nwhere\n\t1 = 1\n\tand d.Pipeline = 'ImportSedgwickEmployerDataAsJSON'\norder by\n\td.DataFactoryLoadId desc"
 					},
 					"dataset": {
-						"referenceName": "PolarisEtlASD_Employer",
+						"referenceName": "Ds_PolarisEtlASD_Employer",
 						"type": "DatasetReference",
 						"parameters": {
 							"Structure": [
@@ -66,12 +66,12 @@
 				}
 			},
 			{
-				"name": "ExecuteChildSedgwickPipeline",
+				"name": "Pl_Epl_ExecuteChildSedgwickPipeline",
 				"description": "Execute ImportSedgwickEmployerDataAsJSON Pipeline",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "LookupMetadata",
+						"activity": "Pl_Lk_LookupMetadata",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -79,7 +79,7 @@
 				],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "ImportSedgwickEmployerDataAsJSON",
+						"referenceName": "Pl_ImportSedgwickEmployerDataAsJSON",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
