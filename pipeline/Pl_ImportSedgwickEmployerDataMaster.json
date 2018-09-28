@@ -123,6 +123,39 @@
 						}
 					}
 				}
+			},
+			{
+				"name": "Lookup Email Notification",
+				"description": "Lookup Email Notification if lookup activity failed",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Pl_Lk_LookupMetadata",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"url": "https://prod-50.eastus.logic.azure.com:443/workflows/7b85035f083f4102b6464d7b8a7e05eb/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ndGIIfUl7BcYqIfm944D8KkrEn-HhdEpCYlZYY6HGCI",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"ErrorMessage": "@{activity('Pl_Lk_LookupMetadata').error.message}",
+						"EmailTo": "@pipeline().parameters.EmailTo"
+					}
+				}
 			}
 		],
 		"parameters": {
