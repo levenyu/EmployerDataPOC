@@ -152,7 +152,7 @@
 					"body": {
 						"DataFactoryName": "@{pipeline().DataFactory}",
 						"PipelineName": "@{pipeline().Pipeline}",
-						"ErrorMessage": "@{activity('Pl_Lk_LookupMetadata').error.message}",
+						"ErrorMessage": "@{activity('Pl_Lk_LookupMetadata').ExceptionMessage}",
 						"EmailTo": "@pipeline().parameters.EmailTo"
 					}
 				}
@@ -224,7 +224,7 @@
 					"body": {
 						"DataFactoryName": "@{pipeline().DataFactory}",
 						"PipelineName": "@{pipeline().Pipeline}",
-						"ErrorMessage": "@{activity('Pl_Epl_ExecuteChildSedgwickPipeline').error.message}",
+						"ErrorMessage": "@{activity('Pl_Epl_ExecuteChildSedgwickPipeline').ExceptionMessage}",
 						"EmailTo": "@pipeline().parameters.EmailTo"
 					}
 				}
