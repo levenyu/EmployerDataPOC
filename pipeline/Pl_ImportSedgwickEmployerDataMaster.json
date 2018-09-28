@@ -158,7 +158,7 @@
 				}
 			},
 			{
-				"name": "Pl_Sp_ReportFailure",
+				"name": "Pl_Sp_ReportFailure_1",
 				"description": "Report pipeline failure",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
@@ -221,6 +221,39 @@
 						"ErrorMessage": "@{activity('Pl_Epl_ExecuteChildSedgwickPipeline').ExceptionMessage}",
 						"EmailTo": "@pipeline().parameters.EmailTo"
 					}
+				}
+			},
+			{
+				"name": "Pl_Sp_ReportFailure_2",
+				"description": "Report pipeline failure",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Pl_Epl_FailedEmail",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"storedProcedureName": "sp_executesql",
+					"storedProcedureParameters": {
+						"stmt": {
+							"value": "--T-SQL Code\nDeclare @err_msg NVARCHAR(255);\nSET @err_msg=N'Error occurred, email was sent';\nRAISERROR(@err_msg,15,1);\n",
+							"type": "string"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Ls_Sql_PolarisEtl",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
