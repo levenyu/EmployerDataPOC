@@ -224,7 +224,7 @@
 				}
 			},
 			{
-				"name": "Stored Procedure1",
+				"name": "Pl_Sp_ReportFailure_2",
 				"description": "Report pipeline failure",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
