@@ -156,6 +156,39 @@
 						"EmailTo": "@pipeline().parameters.EmailTo"
 					}
 				}
+			},
+			{
+				"name": "ReportFailure",
+				"description": "Report Failure",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Lookup Email Notification",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"storedProcedureName": "sp_executesql",
+					"storedProcedureParameters": {
+						"stmt": {
+							"value": "--T-SQL Code\nDeclare @err_msg NVARCHAR(255);\nSET @err_msg=N'Error occurred, email was sent';\nRAISERROR(@err_msg,15,1);\n",
+							"type": "string"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Ls_Sql_PolarisEtl",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"parameters": {
