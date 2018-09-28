@@ -198,7 +198,7 @@
 			},
 			{
 				"name": "Pl_Epl_FailedEmail",
-				"description": "Email Notification if lookup activity failed",
+				"description": "Email Notification if execute pipeline activity failed",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
