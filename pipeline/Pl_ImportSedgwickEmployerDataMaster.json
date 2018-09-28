@@ -170,6 +170,10 @@
 			"ChildPipeLineName": {
 				"type": "String",
 				"defaultValue": "Pl_ImportSedgwickEmployerDataAsJSON"
+			},
+			"EmailTo": {
+				"type": "String",
+				"defaultValue": "Some_One@onecallcm.com"
 			}
 		}
 	}
