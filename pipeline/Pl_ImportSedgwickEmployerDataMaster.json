@@ -245,7 +245,7 @@
 			},
 			"EmailTo": {
 				"type": "String",
-				"defaultValue": "Some_One@onecallcm.com"
+				"defaultValue": "Yuriy_Leventman@onecallcm.com"
 			}
 		}
 	}
