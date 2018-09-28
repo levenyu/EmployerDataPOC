@@ -163,13 +163,13 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Pl_Lk_FailedEmail",
+						"activity": "Pl_Epl_FailedEmail",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					},
 					{
-						"activity": "Pl_Epl_FailedEmail",
+						"activity": "Pl_Lk_FailedEmail",
 						"dependencyConditions": [
 							"Succeeded"
 						]
