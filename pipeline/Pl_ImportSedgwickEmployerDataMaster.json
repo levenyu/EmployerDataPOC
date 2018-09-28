@@ -125,8 +125,8 @@
 				}
 			},
 			{
-				"name": "Lookup Email Notification",
-				"description": "Lookup Email Notification if lookup activity failed",
+				"name": "Pl_Lk_Email Notification",
+				"description": "Email Notification if lookup activity failed",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -158,12 +158,12 @@
 				}
 			},
 			{
-				"name": "ReportFailure",
+				"name": "Pl_Sp_ReportFailure",
 				"description": "Report Failure",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Lookup Email Notification",
+						"activity": "Pl_Lk_Email Notification",
 						"dependencyConditions": [
 							"Succeeded"
 						]
