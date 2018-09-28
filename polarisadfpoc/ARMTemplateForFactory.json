@@ -506,7 +506,7 @@
 							"body": {
 								"DataFactoryName": "@{pipeline().DataFactory}",
 								"PipelineName": "@{pipeline().Pipeline}",
-								"ErrorMessage": "@{activity('Pl_Lk_LookupMetadata').error.message}",
+								"ErrorMessage": "@{activity('Pl_Lk_LookupMetadata').ExceptionMessage}",
 								"EmailTo": "@pipeline().parameters.EmailTo"
 							}
 						}
@@ -553,7 +553,7 @@
 					},
 					{
 						"name": "Pl_Epl_FailedEmail",
-						"description": "Email Notification if lookup activity failed",
+						"description": "Email Notification if execute pipeline activity failed",
 						"type": "WebActivity",
 						"dependsOn": [
 							{
@@ -580,7 +580,7 @@
 							"body": {
 								"DataFactoryName": "@{pipeline().DataFactory}",
 								"PipelineName": "@{pipeline().Pipeline}",
-								"ErrorMessage": "@{activity('Pl_Epl_ExecuteChildSedgwickPipeline').error.message}",
+								"ErrorMessage": "@{activity('Pl_Epl_ExecuteChildSedgwickPipeline').ExceptionMessage}",
 								"EmailTo": "@pipeline().parameters.EmailTo"
 							}
 						}
@@ -601,7 +601,7 @@
 					},
 					"EmailTo": {
 						"type": "String",
-						"defaultValue": "Some_One@onecallcm.com"
+						"defaultValue": "Yuriy_Leventman@onecallcm.com"
 					}
 				},
 				"annotations": []
